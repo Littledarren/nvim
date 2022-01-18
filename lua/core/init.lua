@@ -134,21 +134,36 @@ local dashboard_config = function()
 end
 
 local clipboard_settings = function()
-    vim.cmd [[
-    let g:clipboard = {
-          \   'name': 'win32yank-wsl',
-          \   'copy': {
-          \      '+': 'win32yank.exe -i --crlf',
-          \      '*': 'win32yank.exe -i --crlf',
-          \    },
-          \   'paste': {
-          \      '+': 'win32yank.exe -o --lf',
-          \      '*': 'win32yank.exe -o --lf',
-          \   },
-          \   'cache_enabled': 0,
-          \ }
+    local isWsl = vim.api.nvim_exec( [[
+        function! Is_WSL() abort
+        let proc_version = '/proc/version'
+        echo filereadable(proc_version)
+                \  ? !empty(filter(
+                \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
+                \  : v:false
+        endfunction
+        call Is_WSL()
+        ]], true)
+	
+    if (isWsl~="0")
+    then
+        vim.cmd [[
+        let g:clipboard = {
+            \   'name': 'win32yank-wsl',
+            \   'copy': {
+            \      '+': 'win32yank.exe -i --crlf',
+            \      '*': 'win32yank.exe -i --crlf',
+            \    },
+            \   'paste': {
+            \      '+': 'win32yank.exe -o --lf',
+            \      '*': 'win32yank.exe -o --lf',
+            \   },
+            \   'cache_enabled': 0,
+            \ }
 
-    ]]
+        ]]
+    end
+
 end
 
 local load_core = function()

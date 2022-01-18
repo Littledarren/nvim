@@ -39,9 +39,9 @@ local plug_map = {
     ["n|<leader>lr"] = map_cr("LspRestart"):with_noremap():with_silent()
         :with_nowait(),
     -- lsp saga
-    ["n|g["] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap()
+    ["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap()
         :with_silent(),
-    ["n|g]"] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap()
+    ["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap()
         :with_silent(),
     ["n|<leader>ca"] = map_cr("Lspsaga code_action"):with_noremap()
         :with_silent(),
