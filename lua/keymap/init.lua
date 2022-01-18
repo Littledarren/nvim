@@ -149,7 +149,7 @@ local plug_map = {
     ["n|<leader>gt"] = map_cmd("<Plug>(go-test)"):with_silent(),
     ["n|<leader>gc"] = map_cmd("<Plug>(go-coverage-toggle)"):with_silent(),
     ["n|<leader>gm"] = map_cmd("<Plug>(go-metalinter)"):with_silent(),
-    ["n|<leader>ge"] = map_cmd("<Plug>(go-iferrv"):with_silent(),
+    ["n|<leader>ge"] = map_cmd("<Plug>(go-iferr)"):with_silent(),
     -- Plugin dap
     ["n|<F6>"] = map_cr("lua require('dap').continue()"):with_noremap()
         :with_silent(),
