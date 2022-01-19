@@ -264,7 +264,18 @@ nvim_lsp.html.setup {
 
 nvim_lsp.bashls.setup{}
 nvim_lsp.clangd.setup{}
-nvim_lsp.gopls.setup{}
+nvim_lsp.gopls.setup{
+   cmd = {"gopls", "serve", "--remote=auto"},
+   settings = {
+       gopls = {
+           analyses= {
+               unusedparams=true,
+               unusewrites=true
+           },
+           staticcheck=true,
+       },
+   },
+}
 nvim_lsp.tsserver.setup{}
 nvim_lsp.pyright.setup{}
 
