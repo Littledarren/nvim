@@ -105,7 +105,7 @@ local plug_map = {
         :with_silent(),
     ["n|<Leader>fw"] = map_cu("DashboardFindWord"):with_noremap():with_silent(),
     ["n|<Leader>fn"] = map_cu("DashboardNewFile"):with_noremap():with_silent(),
-    ["n|<Leader>fb"] = map_cu("Telescope file_browser"):with_noremap()
+    ["n|<Leader>fb"] = map_cu("Telescope buffers"):with_noremap()
         :with_silent(),
     ["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap()
         :with_silent(),
