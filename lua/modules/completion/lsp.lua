@@ -104,7 +104,6 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
 end
 
 -- Override server settings here
-
 local enhance_server_opts = {
     ["sumneko_lua"] = function(opts)
         opts.settings = {
@@ -213,6 +212,7 @@ local enhance_server_opts = {
         end
     end,
     ["gopls"] = function(opts)
+        opts.cmd = {"gopls", "serve", "--remote=auto"}
         opts.settings = {
             gopls = {
                 usePlaceholders = true,
@@ -222,7 +222,7 @@ local enhance_server_opts = {
                     unusedparams = true,
                     unusewrites = true
                 },
-                staticcheck=true
+                staticcheck = true,
             }
         }
         -- Disable `gopls`'s format
@@ -230,6 +230,16 @@ local enhance_server_opts = {
             client.resolved_capabilities.document_formatting = false
             custom_attach(client)
         end
+    end
+    ["html"] = function(opts) 
+        opts.cmd = {"html-languageserver", "--stdio"},
+        opts.filetypes = {"html"},
+        opts.init_options = {
+            configurationSection = {"html", "css", "javascript"},
+            embeddedLanguages = {css = true, javascript = true}
+        },
+        opts.settings = {},
+        opts.single_file_support = true,
     end
 }
 
@@ -247,24 +257,7 @@ lsp_installer.on_server_ready(function(server)
     server:setup(opts)
 end)
 
--- https://github.com/vscode-langservers/vscode-html-languageserver-bin
-
-nvim_lsp.html.setup {
-    cmd = {"html-languageserver", "--stdio"},
-    filetypes = {"html"},
-    init_options = {
-        configurationSection = {"html", "css", "javascript"},
-        embeddedLanguages = {css = true, javascript = true}
-    },
-    settings = {},
-    single_file_support = true,
-    flags = {debounce_text_changes = 500},
-    capabilities = capabilities,
-    on_attach = custom_attach
-}
-
 local efmls = require("efmls-configs")
-
 -- Init `efm-langserver` here.
 efmls.init {
     on_attach = custom_attach,

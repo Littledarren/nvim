@@ -151,6 +151,10 @@ editor["ojroques/vim-oscyank"] = {
     opt = true,
     cmd = {"OSCYank"}
 }
+editor["akatime/vim-wakatime"] = {
+    opt = true,
+    event = {"BufReadPre", "BufNewFile"},
+}
 
 return editor
 
