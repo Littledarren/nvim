@@ -147,5 +147,15 @@ editor["edluffy/specs.nvim"] = {
     event = "CursorMoved",
     config = conf.specs
         }
+editor["ojroques/vim-oscyank"] = {
+    opt = true,
+    cmd = {"OSCYank"}
+}
 
 return editor
+
+
+
+
+
+
