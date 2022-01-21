@@ -131,6 +131,9 @@ local plug_map = {
     ["x|ga"] = map_cmd("v:lua.enhance_align('xga')"):with_expr(),
     -- Plugin SymbolsOutline
     ["n|<A-t>"] = map_cr("SymbolsOutline"):with_noremap():with_silent(),
+    -- Plugin lua dev
+    ["n|<A-l>"] = map_cmd("<Plug>(Luadev-RunLine)"):with_silent(),
+    ["n|<A-r>"] = map_cmd("<Plug>(Luadev-Run)"):with_silent(),
     -- Plugin split-term
     ["n|<F5>"] = map_cr("QuickRun"):with_noremap():with_silent(),
     ["n|<C-w>t"] = map_cr("VTerm"):with_noremap():with_silent(),

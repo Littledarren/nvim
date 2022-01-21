@@ -71,6 +71,7 @@ end
 function config.lang_go()
     -- require('go').setup()
     vim.cmd([[
+        let g:go_def_mapping_enabled = 0 " 取消默认的gd映射
         let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
         let g:go_autodetect_gopath = 1
         let g:go_list_type = "quickfix"

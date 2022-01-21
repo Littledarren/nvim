@@ -60,4 +60,8 @@ tools["gelguy/wilder.nvim"] = {
     requires = {{"romgrk/fzy-lua-native", after = "wilder.nvim"}}
 }
 
+tools["bfredl/nvim-luadev"] = {
+    config = conf.luadev
+}
+
 return tools

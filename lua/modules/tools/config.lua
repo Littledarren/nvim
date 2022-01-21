@@ -152,4 +152,7 @@ call wilder#set_option('renderer', wilder#renderer_mux({':': wilder#popupmenu_re
 ]]
 end
 
+function config.luadev()
+end
+
 return config

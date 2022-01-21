@@ -221,7 +221,8 @@ local enhance_server_opts = {
                     shadow = true,
                     unusedparams = true,
                     unusewrites = true
-                }
+                },
+                staticcheck=true
             }
         }
         -- Disable `gopls`'s format
@@ -261,23 +262,6 @@ nvim_lsp.html.setup {
     capabilities = capabilities,
     on_attach = custom_attach
 }
-
-nvim_lsp.bashls.setup{}
-nvim_lsp.clangd.setup{}
-nvim_lsp.gopls.setup{
-   cmd = {"gopls", "serve", "--remote=auto"},
-   settings = {
-       gopls = {
-           analyses= {
-               unusedparams=true,
-               unusewrites=true
-           },
-           staticcheck=true,
-       },
-   },
-}
-nvim_lsp.tsserver.setup{}
-nvim_lsp.pyright.setup{}
 
 local efmls = require("efmls-configs")
 
