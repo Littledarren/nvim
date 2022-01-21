@@ -21,6 +21,7 @@ function config.telescope()
         vim.cmd [[packadd telescope-zoxide]]
     end
 
+
     require("telescope").setup {
         defaults = {
             prompt_prefix = "🔭 ",
@@ -29,6 +30,7 @@ function config.telescope()
                 horizontal = {prompt_position = "bottom", results_width = 0.6},
                 vertical = {mirror = false}
             },
+            previewer = false,
             file_previewer = require("telescope.previewers").vim_buffer_cat.new,
             grep_previewer = require("telescope.previewers").vim_buffer_vimgrep
                 .new,
@@ -45,7 +47,15 @@ function config.telescope()
             },
             color_devicons = true,
             use_less = true,
-            set_env = {["COLORTERM"] = "truecolor"}
+            set_env = {["COLORTERM"] = "truecolor"},
+            mappings = {
+                n = {
+                    ["<A-h>"] = require("telescope.actions.layout").toggle_preview,
+                },
+                i = {
+                    ["<A-h>"] = require("telescope.actions.layout").toggle_preview,
+                },
+            },
         },
         extensions = {
             fzf = {
