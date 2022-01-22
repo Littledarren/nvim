@@ -4,9 +4,9 @@ function config.nvim_lsp()
 	require("modules.completion.lsp")
 end
 
--- function config.lightbulb()
--- 	vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
--- end
+function config.lightbulb()
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
+end
 
 function config.cmp()
 	vim.cmd([[highlight CmpItemAbbrDeprecated guifg=#D8DEE9 guibg=NONE gui=strikethrough]])

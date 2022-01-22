@@ -38,8 +38,8 @@ local plug_map = {
 	["n|gs"] = map_cr("Lspsaga signature_help"):with_noremap():with_silent(),
 	["n|<leader>rn"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
 	["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
-	["n|<C-u>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(-1)"):with_noremap():with_silent(),
-	["n|<C-d>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(1)"):with_noremap():with_silent(),
+	-- ["n|<C-u>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(-1)"):with_noremap():with_silent(),
+	-- ["n|<C-d>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(1)"):with_noremap():with_silent(),
 	["n|gD"] = map_cr("Lspsaga preview_definition"):with_noremap():with_silent(),
 	["n|gd"] = map_cr("lua vim.lsp.buf.definition()"):with_noremap():with_silent(),
 	["n|gy"] = map_cr("lua vim.lsp.buf.type_definition()"):with_noremap():with_silent(),
@@ -86,8 +86,6 @@ local plug_map = {
 	["n|<leader>w"] = map_cu("HopWord"):with_noremap(),
 	["n|<leader>j"] = map_cu("HopLine"):with_noremap(),
 	["n|<leader>k"] = map_cu("HopLine"):with_noremap(),
-	["n|<leader>c"] = map_cu("HopChar1"):with_noremap(),
-	["n|<leader>cc"] = map_cu("HopChar2"):with_noremap(),
 	-- Plugin EasyAlign
 	["n|ga"] = map_cmd("v:lua.enhance_align('nga')"):with_expr(),
 	["x|ga"] = map_cmd("v:lua.enhance_align('xga')"):with_expr(),
@@ -105,6 +103,9 @@ local plug_map = {
 	["n|<leader>sd"] = map_cu("DeleteSession"):with_noremap():with_silent(),
 	-- Plugin SnipRun
 	["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent(),
+	-- Plugin nvim-comment
+	["n|gc"] = map_cr("CommentToggle"):with_noremap():with_silent(),
+	["v|gc"] = map_cr("'<,'>CommentToggle"):with_noremap():with_silent(),
 	-- vim-go
 	["n|<leader>gb"] = map_cmd("<Plug>(go-build)"):with_silent(),
 	["n|<leader>gd"] = map_cmd("<Plug>(go-doc)"):with_silent(),
@@ -117,15 +118,16 @@ local plug_map = {
 	["n|<leader>ge"] = map_cmd("<Plug>(go-iferr)"):with_silent(),
 	-- Plugin dap
 	["n|<F6>"] = map_cr("lua require('dap').continue()"):with_noremap():with_silent(),
-	["n|<leader>dr"] = map_cr("lua require('dap').continue()"):with_noremap():with_silent(),
+	["n|<leader>dc"] = map_cr("lua require('dap').continue()"):with_noremap():with_silent(),
+	["n|<leader>drc"] = map_cr("lua require('dap').run_to_cursor()"):with_noremap():with_silent(),
+	["n|<leader>drl"] = map_cr("lua require('dap').run_last()"):with_noremap():with_silent(),
 	["n|<leader>dd"] = map_cr("lua require('dap').disconnect()"):with_noremap():with_silent(),
-	["n|<leader>db"] = map_cr("lua require('dap').toggle_breakpoint()"):with_noremap():with_silent(),
+	["n|<leader>dbt"] = map_cr("lua require('dap').toggle_breakpoint()"):with_noremap():with_silent(),
 	["n|<leader>dB"] = map_cr("lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))")
 		:with_noremap()
 		:with_silent(),
 	["n|<leader>dbl"] = map_cr("lua require('dap').list_breakpoints()"):with_noremap():with_silent(),
-	["n|<leader>drc"] = map_cr("lua require('dap').run_to_cursor()"):with_noremap():with_silent(),
-	["n|<leader>drl"] = map_cr("lua require('dap').run_last()"):with_noremap():with_silent(),
+
 	["n|<F9>"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
 	["n|<leader>dv"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
 	["n|<F10>"] = map_cr("lua require('dap').step_into()"):with_noremap():with_silent(),

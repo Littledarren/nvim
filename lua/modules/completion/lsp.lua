@@ -84,6 +84,16 @@ local function custom_attach(client)
 		handler_opts = { "double" },
 	})
 
+	if client.resolved_capabilities.document_highlight then
+		vim.cmd([[
+            augroup LspCursorHighlight 
+            au!
+            au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]])
+	end
+
 	if client.resolved_capabilities.document_formatting then
 		vim.cmd([[augroup Format]])
 		vim.cmd([[autocmd! * <buffer>]])
@@ -229,7 +239,7 @@ local enhance_server_opts = {
 		end
 	end,
 	["gopls"] = function(opts)
-		opts.cmd = { "gopls", "serve", "--remote=auto" }
+		-- opts.cmd = { "gopls", "-remote=auto" }
 		opts.settings = {
 			gopls = {
 				usePlaceholders = true,

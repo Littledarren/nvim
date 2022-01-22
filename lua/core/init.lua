@@ -176,7 +176,7 @@ local load_core = function()
 	leader_map()
 
 	pack.ensure_plugins()
-	neovide_config()
+	-- neovide_config()
 	dashboard_config()
 	clipboard_settings()
 

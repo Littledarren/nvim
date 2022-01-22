@@ -4,16 +4,11 @@ local conf = require("modules.editor.config")
 -- align ...
 editor["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 
--- underlines the word under the cursor
-editor["itchyny/vim-cursorword"] = {
-	opt = true,
-	event = { "BufReadPre", "BufNewFile" },
-	config = conf.vim_cursorword,
-}
 editor["terrortylor/nvim-comment"] = {
 	opt = false,
 	config = function()
 		require("nvim_comment").setup({
+			create_mappings = false,
 			hook = function()
 				require("ts_context_commentstring.internal").update_commentstring()
 			end,
@@ -158,6 +153,5 @@ editor["ojroques/vim-oscyank"] = {
 	cmd = { "OSCYank" },
 }
 editor["akatime/vim-wakatime"] = {}
-editor["rcarriga/nvim-notify"] = {}
 
 return editor
