@@ -18,11 +18,11 @@ completion["RishabhRD/nvim-lsputils"] = {
 -- lsp ui
 completion["tami5/lspsaga.nvim"] = { opt = true, after = "nvim-lspconfig" }
 -- show a 💡
-completion["kosayoda/nvim-lightbulb"] = {
-	opt = true,
-	after = "nvim-lspconfig",
-	config = conf.lightbulb,
-}
+-- completion["kosayoda/nvim-lightbulb"] = {
+-- 	opt = true,
+-- 	after = "nvim-lspconfig",
+-- 	config = conf.lightbulb,
+-- }
 -- 展示函数签名
 completion["ray-x/lsp_signature.nvim"] = { opt = true, after = "nvim-lspconfig" }
 completion["hrsh7th/nvim-cmp"] = {

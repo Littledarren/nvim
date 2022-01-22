@@ -66,15 +66,13 @@ local plug_map = {
 	-- Plugin Telescope
 	["n|<Leader>fp"] = map_cu("lua require('telescope').extensions.project.project{}"):with_noremap():with_silent(),
 	["n|<Leader>fr"] = map_cu("lua require('telescope').extensions.frecency.frecency{}"):with_noremap():with_silent(),
-	["n|<Leader>fe"] = map_cu("DashboardFindHistory"):with_noremap():with_silent(),
+	["n|<Leader>fh"] = map_cu("DashboardFindHistory"):with_noremap():with_silent(),
 	["n|<Leader>ff"] = map_cu("DashboardFindFile"):with_noremap():with_silent(),
 	["n|<Leader>sc"] = map_cu("DashboardChangeColorscheme"):with_noremap():with_silent(),
 	["n|<Leader>fw"] = map_cu("DashboardFindWord"):with_noremap():with_silent(),
-	["n|<Leader>fn"] = map_cu("DashboardNewFile"):with_noremap():with_silent(),
 	["n|<Leader>fb"] = map_cu("Telescope buffers"):with_noremap():with_silent(),
 	["n|<Leader>fq"] = map_cu("Telescope quickfix"):with_noremap():with_silent(),
 	["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap():with_silent(),
-	["n|<Leader>fz"] = map_cu("Telescope zoxide list"):with_noremap():with_silent(),
 	-- Plugin accelerate-jk
 	["n|j"] = map_cmd("v:lua.enhance_jk_move('j')"):with_silent():with_expr(),
 	["n|k"] = map_cmd("v:lua.enhance_jk_move('k')"):with_silent():with_expr(),

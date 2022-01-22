@@ -30,7 +30,6 @@ tools["nvim-telescope/telescope-frecency.nvim"] = {
 	after = "telescope.nvim",
 	requires = { { "tami5/sqlite.lua", opt = true } },
 }
-tools["jvgrootveld/telescope-zoxide"] = { opt = true, after = "telescope.nvim" }
 
 -- 快跑！
 tools["thinca/vim-quickrun"] = { opt = true, cmd = { "QuickRun", "Q" } }

@@ -17,10 +17,6 @@ function config.telescope()
 		vim.cmd([[packadd telescope-frecency.nvim]])
 	end
 
-	if not packer_plugins["telescope-zoxide"].loaded then
-		vim.cmd([[packadd telescope-zoxide]])
-	end
-
 	local actions = require("telescope.actions")
 	local action_layout = require("telescope.actions.layout")
 
@@ -81,7 +77,6 @@ function config.telescope()
 
 	require("telescope").load_extension("fzf")
 	require("telescope").load_extension("project")
-	require("telescope").load_extension("zoxide")
 	require("telescope").load_extension("frecency")
 end
 

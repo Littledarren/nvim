@@ -125,7 +125,7 @@ local dashboard_config = function()
 			command = "DashboardFindFile",
 		},
 		file_new = {
-			description = { " File new                   <leader>fn " },
+			description = { " File new                              " },
 			command = "DashboardNewFile",
 		},
 		find_word = {
