@@ -55,6 +55,8 @@ function autocmd.load_autocmds()
 			},
 			-- Check if file changed when its window is focus, more eager than 'autoread'
 			{ "FocusGained", "* checktime" },
+			-- Check if file changed when its window is focus, more eager than 'autoread'
+			{ "CursorHold", "* checktime" },
 			-- Equalize window dimensions when resizing vim window
 			{ "VimResized", "*", [[tabdo wincmd =]] },
 		},
