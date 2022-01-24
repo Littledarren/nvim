@@ -152,6 +152,6 @@ editor["ojroques/vim-oscyank"] = {
 	opt = true,
 	cmd = { "OSCYank" },
 }
-editor["akatime/vim-wakatime"] = {}
+editor["akatime/vim-wakatime"] = {opt =true, cmd={"wakatime"}}
 
 return editor
