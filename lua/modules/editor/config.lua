@@ -4,34 +4,7 @@ local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 
 function config.symbols_outline()
 	require("symbols-outline").setup({
-		symbols = {
-			File = { icon = "", hl = "TSURI" },
-			Module = { icon = "", hl = "TSNamespace" },
-			Namespace = { icon = "", hl = "TSNamespace" },
-			Package = { icon = "", hl = "TSNamespace" },
-			Class = { icon = "𝓒", hl = "TSType" },
-			Method = { icon = "ƒ", hl = "TSMethod" },
-			Property = { icon = "", hl = "TSMethod" },
-			Field = { icon = "", hl = "TSField" },
-			Constructor = { icon = "", hl = "TSConstructor" },
-			Enum = { icon = "ℰ", hl = "TSType" },
-			Interface = { icon = "ﰮ", hl = "TSType" },
-			Function = { icon = "", hl = "TSFunction" },
-			Variable = { icon = "", hl = "TSConstant" },
-			Constant = { icon = "", hl = "TSConstant" },
-			String = { icon = "𝓐", hl = "TSString" },
-			Number = { icon = "#", hl = "TSNumber" },
-			Boolean = { icon = "⊨", hl = "TSBoolean" },
-			Array = { icon = "", hl = "TSConstant" },
-			Object = { icon = "⦿", hl = "TSType" },
-			Key = { icon = "🔐", hl = "TSType" },
-			Null = { icon = "NULL", hl = "TSType" },
-			EnumMember = { icon = "", hl = "TSField" },
-			Struct = { icon = "𝓢", hl = "TSType" },
-			Event = { icon = "🗲", hl = "TSType" },
-			Operator = { icon = "+", hl = "TSOperator" },
-			TypeParameter = { icon = "𝙏", hl = "TSParameter" },
-		},
+		auto_preview = false,
 	})
 end
 
@@ -88,27 +61,27 @@ function config.matchup()
 	vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
 end
 
-function config.nvim_gps()
-	require("nvim-gps").setup({
-		icons = {
-			["class-name"] = " ", -- Classes and class-like objects
-			["function-name"] = " ", -- Functions
-			["method-name"] = " ", -- Methods (functions inside class-like objects)
-		},
-		languages = {
-			-- You can disable any language individually here
-			["c"] = true,
-			["cpp"] = true,
-			["go"] = true,
-			["java"] = true,
-			["javascript"] = true,
-			["lua"] = true,
-			["python"] = true,
-			["rust"] = true,
-		},
-		separator = " > ",
-	})
-end
+-- function config.nvim_gps()
+-- 	require("nvim-gps").setup({
+-- 		icons = {
+-- 			["class-name"] = " ", -- Classes and class-like objects
+-- 			["function-name"] = " ", -- Functions
+-- 			["method-name"] = " ", -- Methods (functions inside class-like objects)
+-- 		},
+-- 		languages = {
+-- 			-- You can disable any language individually here
+-- 			["c"] = true,
+-- 			["cpp"] = true,
+-- 			["go"] = true,
+-- 			["java"] = true,
+-- 			["javascript"] = true,
+-- 			["lua"] = true,
+-- 			["python"] = true,
+-- 			["rust"] = true,
+-- 		},
+-- 		separator = " > ",
+-- 	})
+-- end
 
 function config.autotag()
 	require("nvim-ts-autotag").setup({
@@ -320,21 +293,244 @@ function config.dap()
 	}
 end
 
-function config.specs()
-	require("specs").setup({
-		show_jumps = true,
-		min_jump = 10,
-		popup = {
-			delay_ms = 0, -- delay before popup displays
-			inc_ms = 10, -- time increments used for fade/resize effects
-			blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
-			width = 10,
-			winhl = "PMenu",
-			fader = require("specs").pulse_fader,
-			resizer = require("specs").shrink_resizer,
+
+function config.lualine()
+	local symbols_outline = {
+		sections = {
+			lualine_a = { "mode" },
+			lualine_b = { "filetype" },
+			lualine_c = {},
+			lualine_x = {},
+			lualine_y = {},
+			lualine_z = { "location" },
 		},
-		ignore_filetypes = {},
-		ignore_buftypes = { nofile = true },
+		filetypes = { "Outline" },
+	}
+
+	require("lualine").setup({
+		options = {
+			icons_enabled = true,
+			theme = "catppuccin",
+			disabled_filetypes = {},
+			component_separators = "|",
+			section_separators = { left = "", right = "" },
+		},
+		sections = {
+			lualine_a = { "mode" },
+			lualine_b = { { "branch" }, { "diff" } },
+			lualine_c = {
+				{ "lsp_progress" },
+			},
+			lualine_x = {
+				{
+					"diagnostics",
+					sources = { "nvim_diagnostic" },
+					symbols = { error = " ", warn = " ", info = " " },
+				},
+			},
+			lualine_y = { "filetype", "encoding", "fileformat" },
+			lualine_z = { "progress", "location" },
+		},
+		inactive_sections = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = { "filename" },
+			lualine_x = { "location" },
+			lualine_y = {},
+			lualine_z = {},
+		},
+		tabline = {},
+		extensions = {
+			"quickfix",
+			"nvim-tree",
+			"toggleterm",
+			"fugitive",
+			symbols_outline,
+		},
+	})
+end
+
+function config.nvim_tree()
+	require("nvim-tree").setup({
+		disable_netrw = true,
+		hijack_netrw = true,
+		open_on_setup = false,
+		ignore_ft_on_setup = {},
+		auto_close = true,
+		open_on_tab = false,
+		hijack_cursor = true,
+		update_cwd = false,
+		update_to_buf_dir = { enable = true, auto_open = true },
+		diagnostics = {
+			enable = false,
+			icons = { hint = "", info = "", warning = "", error = "" },
+		},
+		update_focused_file = {
+			enable = true,
+			update_cwd = true,
+			ignore_list = {},
+		},
+		system_open = { cmd = nil, args = {} },
+		filters = { dotfiles = false, custom = {} },
+		git = { enable = true, ignore = true, timeout = 500 },
+		view = {
+			width = 30,
+			height = 30,
+			hide_root_folder = false,
+			side = "left",
+			auto_resize = false,
+			mappings = { custom_only = false, list = {} },
+			number = false,
+			relativenumber = false,
+			signcolumn = "yes",
+		},
+		trash = { cmd = "trash", require_confirm = true },
+	})
+end
+
+function config.nvim_bufferline()
+	require("bufferline").setup({
+		options = {
+			number = "none",
+			modified_icon = "✥",
+			buffer_close_icon = "",
+			left_trunc_marker = "",
+			right_trunc_marker = "",
+			max_name_length = 14,
+			max_prefix_length = 13,
+			tab_size = 20,
+			show_buffer_close_icons = true,
+			show_buffer_icons = true,
+			show_tab_indicators = true,
+			diagnostics = "nvim_lsp",
+			always_show_bufferline = true,
+			separator_style = "thin",
+			offsets = {
+				{
+					filetype = "NvimTree",
+					text = "File Explorer",
+					text_align = "center",
+					padding = 1,
+				},
+			},
+		},
+	})
+end
+
+function config.gitsigns()
+	require("gitsigns").setup({
+		signs = {
+			add = {
+				hl = "GitSignsAdd",
+				text = "│",
+				numhl = "GitSignsAddNr",
+				linehl = "GitSignsAddLn",
+			},
+			change = {
+				hl = "GitSignsChange",
+				text = "│",
+				numhl = "GitSignsChangeNr",
+				linehl = "GitSignsChangeLn",
+			},
+			delete = {
+				hl = "GitSignsDelete",
+				text = "_",
+				numhl = "GitSignsDeleteNr",
+				linehl = "GitSignsDeleteLn",
+			},
+			topdelete = {
+				hl = "GitSignsDelete",
+				text = "‾",
+				numhl = "GitSignsDeleteNr",
+				linehl = "GitSignsDeleteLn",
+			},
+			changedelete = {
+				hl = "GitSignsChange",
+				text = "~",
+				numhl = "GitSignsChangeNr",
+				linehl = "GitSignsChangeLn",
+			},
+		},
+		keymaps = {
+			-- Default keymap options
+			noremap = true,
+			buffer = true,
+			["n ]g"] = {
+				expr = true,
+				"&diff ? ']g' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'",
+			},
+			["n [g"] = {
+				expr = true,
+				"&diff ? '[g' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'",
+			},
+			["n <leader>hs"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+			["v <leader>hs"] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+			["n <leader>hu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+			["n <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+			["v <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+			["n <leader>hR"] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+			["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+			["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
+			-- Text objects
+			["o ih"] = ':<C-U>lua require"gitsigns".text_object()<CR>',
+			["x ih"] = ':<C-U>lua require"gitsigns".text_object()<CR>',
+		},
+		watch_gitdir = { interval = 1000, follow_files = true },
+		current_line_blame = true,
+		current_line_blame_opts = { delay = 1000, virtual_text_pos = "eol" },
+		sign_priority = 6,
+		update_debounce = 100,
+		status_formatter = nil, -- Use default
+		word_diff = false,
+		diff_opts = { internal = true },
+	})
+end
+
+function config.trouble()
+	require("trouble").setup({
+		position = "bottom", -- position of the list can be: bottom, top, left, right
+		height = 10, -- height of the trouble list when position is top or bottom
+		width = 50, -- width of the list when position is left or right
+		icons = true, -- use devicons for filenames
+		mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+		fold_open = "", -- icon used for open folds
+		fold_closed = "", -- icon used for closed folds
+		action_keys = {
+			-- key mappings for actions in the trouble list
+			-- map to {} to remove a mapping, for example:
+			-- close = {},
+			close = "q", -- close the list
+			cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+			refresh = "r", -- manually refresh
+			jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
+			open_split = { "<c-x>" }, -- open buffer in new split
+			open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+			open_tab = { "<c-t>" }, -- open buffer in new tab
+			jump_close = { "o" }, -- jump to the diagnostic and close the list
+			toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+			toggle_preview = "P", -- toggle auto_preview
+			hover = "K", -- opens a small popup with the full multiline message
+			preview = "p", -- preview the diagnostic location
+			close_folds = { "zM", "zm" }, -- close all folds
+			open_folds = { "zR", "zr" }, -- open all folds
+			toggle_fold = { "zA", "za" }, -- toggle fold of current file
+			previous = "k", -- preview item
+			next = "j", -- next item
+		},
+		indent_lines = true, -- add an indent guide below the fold icons
+		auto_open = false, -- automatically open the list when you have diagnostics
+		auto_close = false, -- automatically close the list when you have no diagnostics
+		auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+		auto_fold = false, -- automatically fold a file trouble list at creation
+		signs = {
+			-- icons / text used for a diagnostic
+			error = "",
+			warning = "",
+			hint = "",
+			information = "",
+			other = "﫠",
+		},
+		use_lsp_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 	})
 end
 

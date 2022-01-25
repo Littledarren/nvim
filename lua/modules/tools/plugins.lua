@@ -31,25 +31,11 @@ tools["nvim-telescope/telescope-frecency.nvim"] = {
 	requires = { { "tami5/sqlite.lua", opt = true } },
 }
 
--- 快跑！
-tools["thinca/vim-quickrun"] = { opt = true, cmd = { "QuickRun", "Q" } }
--- 我是说代码快跑
-tools["michaelb/sniprun"] = {
-	opt = true,
-	run = "bash ./install.sh",
-	cmd = { "SnipRun", "'<,'>SnipRun" },
-}
 -- popular
 tools["folke/which-key.nvim"] = {
 	config = function()
 		require("which-key").setup({})
 	end,
-}
--- better diagnostics
-tools["folke/trouble.nvim"] = {
-	opt = true,
-	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
-	config = conf.trouble,
 }
 -- StartupTime profile
 tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
@@ -61,8 +47,10 @@ tools["gelguy/wilder.nvim"] = {
 	requires = { { "romgrk/fzy-lua-native", after = "wilder.nvim" } },
 }
 
-tools["bfredl/nvim-luadev"] = {
-	config = conf.luadev,
-}
+tools["bfredl/nvim-luadev"] = {}
+-- align ...
+tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
+
+tools["akatime/vim-wakatime"] = { opt = true, cmd = { "wakatime" } }
 
 return tools

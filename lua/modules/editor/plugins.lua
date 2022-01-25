@@ -1,9 +1,6 @@
 local editor = {}
 local conf = require("modules.editor.config")
 
--- align ...
-editor["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
-
 editor["terrortylor/nvim-comment"] = {
 	opt = false,
 	config = function()
@@ -48,12 +45,12 @@ editor["mfussenegger/nvim-ts-hint-textobject"] = {
 	opt = true,
 	after = "nvim-treesitter",
 }
--- for position in the status line
-editor["SmiteshP/nvim-gps"] = {
-	opt = true,
-	after = "nvim-treesitter",
-	config = conf.nvim_gps,
-}
+-- -- for position in the status line
+-- editor["SmiteshP/nvim-gps"] = {
+-- 	opt = true,
+-- 	after = "nvim-treesitter",
+-- 	config = conf.nvim_gps,
+-- }
 -- for html tags
 editor["windwp/nvim-ts-autotag"] = {
 	opt = true,
@@ -142,16 +139,52 @@ editor["famiu/bufdelete.nvim"] = {
 	opt = true,
 	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
 }
--- Show where your cursor moves when jumping large distances (e.g between windows). Fast and lightweight, written completely in Lua.
-editor["edluffy/specs.nvim"] = {
-	opt = true,
-	event = "CursorMoved",
-	config = conf.specs,
-}
 editor["ojroques/vim-oscyank"] = {
 	opt = true,
 	cmd = { "OSCYank" },
 }
-editor["akatime/vim-wakatime"] = {opt =true, cmd={"wakatime"}}
 
+-- statusline
+editor["arkav/lualine-lsp-progress"] = {
+	opt = false,
+}
+editor["hoob3rt/lualine.nvim"] = {
+	opt = false,
+	config = conf.lualine,
+}
+-- bufferline 类似airline的那个。
+editor["akinsho/nvim-bufferline.lua"] = {
+	opt = true,
+	event = "BufRead",
+	config = conf.nvim_bufferline,
+}
+-- 文件浏览器
+editor["kyazdani42/nvim-tree.lua"] = {
+	opt = true,
+	cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+	config = conf.nvim_tree,
+}
+-- 类似vscode的git
+editor["lewis6991/gitsigns.nvim"] = {
+	opt = true,
+	event = { "BufRead", "BufNewFile" },
+	config = conf.gitsigns,
+	requires = { "nvim-lua/plenary.nvim", opt = true },
+}
+
+-- better diagnostics
+editor["folke/trouble.nvim"] = {
+	opt = true,
+	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+	config = conf.trouble,
+}
+
+-- 快跑！
+editor["thinca/vim-quickrun"] = { opt = true, cmd = { "QuickRun", "Q" } }
+-- 我是说代码快跑
+editor["michaelb/sniprun"] = {
+	opt = true,
+	run = "bash ./install.sh",
+	cmd = { "SnipRun", "'<,'>SnipRun" },
+}
 return editor
