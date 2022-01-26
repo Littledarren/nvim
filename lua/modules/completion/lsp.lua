@@ -303,8 +303,12 @@ local staticcheck = require("efmls-configs.linters.staticcheck")
 
 local black = require("efmls-configs.formatters.black")
 local stylua = require("efmls-configs.formatters.stylua")
-local clangfmt = require("efmls-configs.formatters.clang_format")
-local goimports = require("efmls-configs.formatters.goimports")
+-- local golangci = require("efmls-configs.linters.golangci")
+local golines = require("efmls-configs.formatters.golines")
+golines = vim.tbl_extend("force", golines, {
+	formatCommand = "golines --ignore-generated --base-formatter=gofumpt",
+	formatStdin = true,
+})
 local prettier = require("efmls-configs.formatters.prettier")
 local shfmt = require("efmls-configs.formatters.shfmt")
 
@@ -329,7 +333,7 @@ efmls.setup({
 	lua = { formatter = stylua },
 	--    c = {formatter = clangfmt, linter = clangtidy},
 	--   cpp = {formatter = clangfmt, linter = clangtidy},
-	-- go = {formatter = goimports, linter = staticcheck},
+	go = { formatter = golines },
 	--    python = {formatter = black, linter = flake8},
 	vue = { formatter = prettier },
 	typescript = { formatter = prettier, linter = eslint },

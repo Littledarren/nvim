@@ -76,9 +76,10 @@ function config.lang_go()
 	-- require('go').setup()
 	vim.cmd([[
         let g:go_def_mapping_enabled = 0 " 取消默认的gd映射
-        let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
+        let g:go_doc_keywordprg_enabled = 0 "取消默认K映射
         let g:go_autodetect_gopath = 1
-        let g:go_list_type = "quickfix"
+        let g:go_fmt_autosave = 0 " 禁用默认的格式化工具
+        "let g:go_list_type = "loc"
         let g:go_metalinter_command = 'golangci-lint'
         let g:go_version_warning = 1
         let g:godef_split=2

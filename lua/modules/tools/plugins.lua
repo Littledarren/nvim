@@ -51,6 +51,6 @@ tools["bfredl/nvim-luadev"] = {}
 -- align ...
 tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 
-tools["akatime/vim-wakatime"] = { opt = true, cmd = { "wakatime" } }
+-- tools["akatime/vim-wakatime"] = { opt = true, cmd = { "wakatime" } }
 
 return tools

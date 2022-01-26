@@ -139,11 +139,13 @@ editor["ojroques/vim-oscyank"] = {
 }
 -- statusline
 editor["arkav/lualine-lsp-progress"] = {
-	opt = false,
+	opt = true,
+	after = "nvim-lspconfig",
 }
 editor["hoob3rt/lualine.nvim"] = {
-	opt = false,
+	opt = true,
 	config = conf.lualine,
+	after = "nvim-lspconfig",
 }
 -- bufferline 类似airline的那个。
 editor["akinsho/nvim-bufferline.lua"] = {
