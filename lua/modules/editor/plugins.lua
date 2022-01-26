@@ -45,12 +45,6 @@ editor["mfussenegger/nvim-ts-hint-textobject"] = {
 	opt = true,
 	after = "nvim-treesitter",
 }
--- -- for position in the status line
--- editor["SmiteshP/nvim-gps"] = {
--- 	opt = true,
--- 	after = "nvim-treesitter",
--- 	config = conf.nvim_gps,
--- }
 -- for html tags
 editor["windwp/nvim-ts-autotag"] = {
 	opt = true,
@@ -143,7 +137,6 @@ editor["ojroques/vim-oscyank"] = {
 	opt = true,
 	cmd = { "OSCYank" },
 }
-
 -- statusline
 editor["arkav/lualine-lsp-progress"] = {
 	opt = false,
