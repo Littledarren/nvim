@@ -28,7 +28,8 @@ local plug_map = {
 	["n|<leader>pi"] = map_cr("PackerInstall"):with_silent():with_noremap():with_nowait(),
 	["n|<leader>pc"] = map_cr("PackerClean"):with_silent():with_noremap():with_nowait(),
 	-- Lsp mapp work when insertenter and lsp start
-	["n|<leader>li"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
+	["n|<leader>lq"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
+	["n|<leader>li"] = map_cr("LspInstallInfo"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>lr"] = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
 	-- lsp saga
 	["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent(),
@@ -38,18 +39,21 @@ local plug_map = {
 	["n|gs"] = map_cr("Lspsaga signature_help"):with_noremap():with_silent(),
 	["n|<leader>rn"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
 	["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
-	-- ["n|<C-u>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(-1)"):with_noremap():with_silent(),
-	-- ["n|<C-d>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(1)"):with_noremap():with_silent(),
+	["n|<C-u>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(-1)"):with_noremap():with_silent(),
+	["n|<C-d>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(1)"):with_noremap():with_silent(),
 	["n|gD"] = map_cr("Lspsaga preview_definition"):with_noremap():with_silent(),
 	["n|gd"] = map_cr("lua vim.lsp.buf.definition()"):with_noremap():with_silent(),
 	["n|gy"] = map_cr("lua vim.lsp.buf.type_definition()"):with_noremap():with_silent(),
+	["n|gh"] = map_cr("Lspsaga lsp_finder"):with_noremap():with_silent(),
+	["n|g0"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
 	["n|gi"] = map_cr("lua vim.lsp.buf.implementation()"):with_noremap():with_silent(),
+	["n|gl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
 	["n|gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
 	-- term
 	["n|<A-d>"] = map_cu('lua require("FTerm").toggle()'):with_noremap():with_silent(),
 	["t|<A-d>"] = map_cu([[<C-\><C-n><CMD>lua require("FTerm").toggle()]]):with_noremap():with_silent(),
 	["t|<A-S-d>"] = map_cu([[<C-\><C-n><CMD>lua require("FTerm").exit()]]):with_noremap():with_silent(),
-	["n|<Leader>G"] = map_cu("Git"):with_noremap():with_silent(),
+	["n|<A-g>"] = map_cu("Git"):with_noremap():with_silent(),
 	["n|gps"] = map_cr("G push"):with_noremap():with_silent(),
 	["n|gpl"] = map_cr("G pull"):with_noremap():with_silent(),
 	-- Plugin trouble
@@ -127,7 +131,6 @@ local plug_map = {
 		:with_noremap()
 		:with_silent(),
 	["n|<leader>dbl"] = map_cr("lua require('dap').list_breakpoints()"):with_noremap():with_silent(),
-
 	["n|<F9>"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
 	["n|<leader>dv"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
 	["n|<F10>"] = map_cr("lua require('dap').step_into()"):with_noremap():with_silent(),
