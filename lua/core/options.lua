@@ -1,29 +1,15 @@
 local global = require("core.global")
 
-local function bind_option(options)
-	for k, v in pairs(options) do
-		if v == true then
-			vim.cmd("set " .. k)
-		elseif v == false then
-			vim.cmd("set no" .. k)
-		else
-			vim.cmd("set " .. k .. "=" .. v)
-		end
-	end
-end
-
 local function load_options()
 	local global_local = {
 		termguicolors = true,
 		mouse = "a",
 		errorbells = true,
 		visualbell = true,
-		hidden = true,
-		fileformats = "unix,mac,dos",
 		magic = true,
-		virtualedit = "block",
-		encoding = "utf-8",
-		viewoptions = "folds,cursor,curdir,slash,unix",
+		-- virtualedit = "block",
+		-- encoding = "utf-8",
+		fileencoding = "utf-8",
 		sessionoptions = "curdir,help,tabpages,winsize",
 		clipboard = "unnamedplus",
 		wildignorecase = true,
@@ -45,7 +31,7 @@ local function load_options()
 		ttimeout = true,
 		timeoutlen = 500,
 		ttimeoutlen = 0,
-		updatetime = 100,
+		updatetime = 300,
 		redrawtime = 1500,
 		ignorecase = true,
 		smartcase = true,
@@ -93,9 +79,6 @@ local function load_options()
 		winblend = 10,
 		autoread = true,
 		autowrite = true,
-	}
-
-	local bw_local = {
 		undofile = true,
 		synmaxcol = 2500,
 		formatoptions = "1jcroql",
@@ -107,7 +90,6 @@ local function load_options()
 		softtabstop = -1,
 		breakindentopt = "shift:2,min:20",
 		wrap = false,
-		linebreak = true,
 		number = true,
 		relativenumber = true,
 		foldenable = true,
@@ -116,20 +98,9 @@ local function load_options()
 		concealcursor = "niv",
 	}
 
-	if global.is_mac then
-		vim.g.clipboard = {
-			name = "macOS-clipboard",
-			copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
-			paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
-			cache_enabled = 0,
-		}
-		vim.g.python_host_prog = "/usr/bin/python"
-		vim.g.python3_host_prog = "/usr/local/bin/python3"
-	end
 	for name, value in pairs(global_local) do
 		vim.o[name] = value
 	end
-	bind_option(bw_local)
 end
 
 load_options()

@@ -68,73 +68,6 @@ local neovide_config = function()
 	vim.g.neovide_cursor_vfx_particle_density = 5.0
 end
 
-local dashboard_config = function()
-	vim.g.dashboard_footer_icon = "🐬 "
-	vim.g.dashboard_default_executive = "telescope"
-
-	vim.g.dashboard_custom_header = {
-		[[                                                          ]],
-		[[                                                          ]],
-		[[                                                          ]],
-		[[   ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗ ]],
-		[[   ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║ ]],
-		[[   ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║ ]],
-		[[   ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║ ]],
-		[[   ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║ ]],
-		[[   ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ]],
-	}
-	--    vim.g.dashboard_custom_header = {
-	--        [[              ...  .......          ]],
-	--        [[         ....................       ]],
-	--        [[    ..'........................     ]],
-	--        [[ ...,'.......'.., .........'....    ]],
-	--        [[  .'......,. ;'., '..'.......'.'.   ]],
-	--        [[ .'.,'.''.;..,'.. .  ...'....','..  ]],
-	--        [[..''.'.''''.....        .,'....;'.. ]],
-	--        [[..',.......'. .        ..';'..','...]],
-	--        [[ ....''..  ..        .....;,..','...]],
-	--        [[  . .....           ......,..';,....]],
-	--        [[      .'.         ....  ... ,,'.....]],
-	--        [[      .,..             .....,'..... ]],
-	--        [[     .'''.             ...'......   ]],
-	--        [[     ..'..'.          ... ......    ]],
-	--        [[       . '.'..             ..       ]],
-	--        [[         ......           .         ]],
-	--        [[            ....                    ]]
-	--    }
-
-	vim.g.dashboard_custom_section = {
-		change_colorscheme = {
-			description = { " Scheme change              <leader>sc " },
-			command = "DashboardChangeColorscheme",
-		},
-		find_frecency = {
-			description = { " File frecency              <leader>fr " },
-			command = "Telescope frecency",
-		},
-		find_history = {
-			description = { " File history               <leader>fe " },
-			command = "DashboardFindHistory",
-		},
-		find_project = {
-			description = { " Project find               <leader>fp " },
-			command = "Telescope project",
-		},
-		find_file = {
-			description = { " File find                  <leader>ff " },
-			command = "DashboardFindFile",
-		},
-		file_new = {
-			description = { " File new                              " },
-			command = "DashboardNewFile",
-		},
-		find_word = {
-			description = { " Word find                  <leader>fw " },
-			command = "DashboardFindWord",
-		},
-	}
-end
-
 local clipboard_settings = function()
 	local isWsl = vim.api.nvim_exec(
 		[[
@@ -177,7 +110,6 @@ local load_core = function()
 
 	pack.ensure_plugins()
 	-- neovide_config()
-	dashboard_config()
 	clipboard_settings()
 
 	require("core.options")

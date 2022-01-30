@@ -38,7 +38,7 @@ function Packer:load_packer()
 	end
 	packer.init({
 		compile_path = packer_compiled,
-		git = { clone_timeout = 120 },
+		git = { clone_timeout = 120, default_url_format = "https://hub.fastgit.org/%s" },
 		disable_commands = true,
 		max_jobs = 20,
 		display = {
@@ -60,7 +60,7 @@ function Packer:init_ensure_plugins()
 	local packer_dir = data_dir .. "pack/packer/opt/packer.nvim"
 	local state = uv.fs_stat(packer_dir)
 	if not state then
-		local cmd = "!git clone https://github.com/wbthomason/packer.nvim " .. packer_dir
+		local cmd = "!git clone https://hub.fastgit.org/wbthomason/packer.nvim " .. packer_dir
 		api.nvim_command(cmd)
 		uv.fs_mkdir(data_dir .. "lua", 511, function()
 			assert("make compile path dir faield")

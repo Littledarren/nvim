@@ -145,7 +145,7 @@ editor["arkav/lualine-lsp-progress"] = {
 editor["hoob3rt/lualine.nvim"] = {
 	opt = true,
 	config = conf.lualine,
-	after = "nvim-lspconfig",
+	after = "lualine-lsp-progress",
 }
 -- bufferline 类似airline的那个。
 editor["akinsho/nvim-bufferline.lua"] = {

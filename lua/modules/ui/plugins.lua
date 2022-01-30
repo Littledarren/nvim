@@ -13,7 +13,7 @@ ui["catppuccin/nvim"] = {
 	config = conf.catppuccin,
 }
 -- 启动页，当然也有一些功能。。。
-ui["glepnir/dashboard-nvim"] = { opt = true, event = "BufWinEnter" }
+ui["goolord/alpha-nvim"] = { opt = true, event = "BufWinEnter", config = conf.alpha }
 
 -- 类似indentline
 ui["lukas-reineke/indent-blankline.nvim"] = {

@@ -15,7 +15,9 @@ end
 
 function autocmd.load_autocmds()
 	local definitions = {
-		packer = {},
+		packer = {
+			{ "BufWritePost", "~/.config/nvim/**.lua", "lua require('core.pack').auto_compile()" },
+		},
 		bufs = {
 			{ "BufWritePre", "/tmp/*", "setlocal noundofile" },
 			{ "BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile" },
