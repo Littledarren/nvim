@@ -218,7 +218,7 @@ local enhance_server_opts = {
 		end
 	end,
 	["gopls"] = function(opts)
-		-- opts.cmd = { "gopls", "-remote=auto" }
+		opts.cmd = { "gopls", "-remote=auto" }
 		opts.settings = {
 			gopls = {
 				usePlaceholders = true,

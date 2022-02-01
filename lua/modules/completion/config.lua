@@ -198,7 +198,6 @@ function config.nullls()
 		completion.spell,
 	}
 	ls.setup({
-		debug = true,
 		sources = sources,
 	})
 end

@@ -1,11 +1,9 @@
 local lang = {}
 local conf = require("modules.lang.config")
 
-lang["fatih/vim-go"] = {
+lang["ray-x/go.nvim"] = {
 	opt = true,
-	branch = "v1.25",
 	ft = "go",
-	run = ":GoInstallBinaries",
 	config = conf.lang_go,
 }
 
