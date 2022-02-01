@@ -48,9 +48,10 @@ completion["hrsh7th/nvim-cmp"] = {
 		-- }
 	},
 }
-completion["creativenull/efmls-configs-nvim"] = {
-	opt = false,
-	requires = "neovim/nvim-lspconfig",
+completion["jose-elias-alvarez/null-ls.nvim"] = {
+    opt=true,
+	after = "nvim-lspconfig",
+	config = conf.nullls,
 }
 completion["L3MON4D3/LuaSnip"] = {
 	after = "nvim-cmp",

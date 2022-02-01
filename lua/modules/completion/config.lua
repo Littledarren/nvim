@@ -181,4 +181,15 @@ function config.nvim_lsputils()
 	vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
 end
 
+function config.nullls()
+    local ls = require("null-ls")
+    ls.setup{
+        ls.builtins.formatting.stylua,
+        ls.builtins.diagnostics.eslint,
+        ls.builtins.completion.spell,
+    }
+end
+
+
+
 return config

@@ -110,6 +110,7 @@ local load_core = function()
 
 	pack.ensure_plugins()
 	-- neovide_config()
+	-- dashboard_config()
 	clipboard_settings()
 
 	require("core.options")

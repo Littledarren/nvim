@@ -80,6 +80,7 @@ editor["phaazon/hop.nvim"] = {
 		require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 	end,
 }
+editor["hrsh7th/vim-eft"] = { opt = true }
 -- 平滑滚动
 editor["karb94/neoscroll.nvim"] = {
 	opt = true,

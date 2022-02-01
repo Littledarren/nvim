@@ -94,6 +94,7 @@ function config.specs()
 		ignore_buftypes = { nofile = true },
 	})
 end
+
 function config.alpha()
 	local alpha = require("alpha")
 	local dashboard = require("alpha.themes.dashboard")
