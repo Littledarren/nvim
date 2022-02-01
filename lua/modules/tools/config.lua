@@ -80,7 +80,6 @@ function config.telescope()
 	require("telescope").load_extension("frecency")
 end
 
-
 function config.sniprun()
 	require("sniprun").setup({
 		selected_interpreters = {}, -- " use those instead of the default for the current filetype

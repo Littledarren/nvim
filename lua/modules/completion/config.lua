@@ -182,14 +182,25 @@ function config.nvim_lsputils()
 end
 
 function config.nullls()
-    local ls = require("null-ls")
-    ls.setup{
-        ls.builtins.formatting.stylua,
-        ls.builtins.diagnostics.eslint,
-        ls.builtins.completion.spell,
-    }
+	local ls = require("null-ls")
+	local formatting = ls.builtins.formatting
+	local diagnostics = ls.builtins.diagnostics
+	local completion = ls.builtins.completion
+	local sources = {
+		formatting.stylua,
+		formatting.clang_format,
+		formatting.gofumpt.with({
+			args = { "-extra" },
+		}),
+		formatting.goimports,
+		diagnostics.eslint,
+		diagnostics.codespell,
+		completion.spell,
+	}
+	ls.setup({
+		debug = true,
+		sources = sources,
+	})
 end
-
-
 
 return config

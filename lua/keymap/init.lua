@@ -6,7 +6,7 @@ require("keymap.config")
 
 local plug_map = {
 	-- Bufferline
-    ["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
+	["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
 	["n|<leader>bn"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
 	["n|<leader>bp"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
 	["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap(),
@@ -79,7 +79,7 @@ local plug_map = {
 	["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap():with_silent(),
 	-- Plugin accelerate-jk
 	["n|j"] = map_cmd("v:lua.enhance_jk_move('j')"):with_silent():with_expr(),
-        ["n|k"] = map_cmd("v:lua.enhance_jk_move('k')"):with_silent():with_expr(),
+	["n|k"] = map_cmd("v:lua.enhance_jk_move('k')"):with_silent():with_expr(),
 	-- Plugin vim-eft
 	["n|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
 	["n|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
@@ -94,7 +94,7 @@ local plug_map = {
 	["o|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
 	["o|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
 	["o|t"] = map_cmd("v:lua.enhance_ft_move('t')"):with_expr(),
-        ["o|T"] = map_cmd("v:lua.enhance_ft_move('T')"):with_expr(),
+	["o|T"] = map_cmd("v:lua.enhance_ft_move('T')"):with_expr(),
 	["o|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
 	-- Plugin Hop
 	["n|<leader>w"] = map_cu("HopWord"):with_noremap(),
@@ -107,7 +107,7 @@ local plug_map = {
 	["n|<A-t>"] = map_cr("SymbolsOutline"):with_noremap():with_silent(),
 	-- Plugin lua dev
 	["n|<F12>"] = map_cmd("<Plug>(Luadev-RunLine)"):with_silent(),
-        ["n|<F1>"] = map_cmd("<Plug>(Luadev-Run)"):with_silent(),
+	["n|<F1>"] = map_cmd("<Plug>(Luadev-Run)"):with_silent(),
 	-- Plugin split-term
 	["n|<F5>"] = map_cr("QuickRun"):with_noremap():with_silent(),
 	-- Plugin auto_session

@@ -49,7 +49,7 @@ completion["hrsh7th/nvim-cmp"] = {
 	},
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
-    opt=true,
+	opt = true,
 	after = "nvim-lspconfig",
 	config = conf.nullls,
 }

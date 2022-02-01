@@ -293,7 +293,6 @@ function config.dap()
 	}
 end
 
-
 function config.lualine()
 	local symbols_outline = {
 		sections = {
