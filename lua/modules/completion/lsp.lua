@@ -73,12 +73,6 @@ local function custom_attach(client)
         ]])
 	end
 
-	if client.resolved_capabilities.document_formatting then
-		vim.cmd([[augroup Format]])
-		vim.cmd([[autocmd! * <buffer>]])
-		vim.cmd([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
-		vim.cmd([[augroup END]])
-	end
 end
 
 local function switch_source_header_splitcmd(bufnr, splitcmd)
@@ -246,6 +240,16 @@ local enhance_server_opts = {
 		}
 		opts.settings = {}
 		opts.single_file_support = true
+	end,
+	["ltex"] = function(opts)
+		opts.settings = {
+			ltex = {
+				additionalRules = {
+					motherTongue = "zh-CN",
+				},
+				language = "zh-CN",
+			},
+		}
 	end,
 }
 

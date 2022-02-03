@@ -10,7 +10,7 @@ local function load_options()
 		-- virtualedit = "block",
 		-- encoding = "utf-8",
 		fileencoding = "utf-8",
-		sessionoptions = "curdir,help,tabpages,winsize",
+		sessionoptions = "blank,buffers,folds,help,winpos,terminal,curdir,tabpages,winsize",
 		clipboard = "unnamedplus",
 		wildignorecase = true,
 		wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",

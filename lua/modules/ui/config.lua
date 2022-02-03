@@ -15,7 +15,6 @@ function config.catppuccin()
 				enabled = true,
 				colored_indent_levels = false,
 			},
-			dashboard = true,
 			bufferline = true,
 			markdown = true,
 			lightspeed = false,
@@ -73,27 +72,25 @@ function config.indent_blankline()
 		},
 		space_char_blankline = " ",
 	})
-	-- because lazy load indent-blankline so need readd this autocmd
-	vim.cmd("autocmd CursorMoved * IndentBlanklineRefresh")
 end
 
-function config.specs()
-	require("specs").setup({
-		show_jumps = true,
-		min_jump = 10,
-		popup = {
-			delay_ms = 0, -- delay before popup displays
-			inc_ms = 10, -- time increments used for fade/resize effects
-			blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
-			width = 10,
-			winhl = "PMenu",
-			fader = require("specs").pulse_fader,
-			resizer = require("specs").shrink_resizer,
-		},
-		ignore_filetypes = {},
-		ignore_buftypes = { nofile = true },
-	})
-end
+-- function config.specs()
+-- 	require("specs").setup({
+-- 		show_jumps = true,
+-- 		min_jump = 10,
+-- 		popup = {
+-- 			delay_ms = 0, -- delay before popup displays
+-- 			inc_ms = 10, -- time increments used for fade/resize effects
+-- 			blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
+-- 			width = 10,
+-- 			winhl = "PMenu",
+-- 			fader = require("specs").pulse_fader,
+-- 			resizer = require("specs").shrink_resizer,
+-- 		},
+-- 		ignore_filetypes = {},
+-- 		ignore_buftypes = { nofile = true },
+-- 	})
+-- end
 
 function config.alpha()
 	local alpha = require("alpha")

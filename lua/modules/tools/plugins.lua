@@ -51,6 +51,23 @@ tools["bfredl/nvim-luadev"] = {}
 -- align ...
 tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 
--- tools["akatime/vim-wakatime"] = { opt = true, cmd = { "wakatime" } }
+-- highlight todo list
+tools["folke/todo-comments.nvim"] = {
+	opt = true,
+	cmd = { "TodoQuickFix", "TodoLocList", "TodoTrouble", "TodoTelescope" },
+	config = function()
+		require("todo-comments").setup({})
+	end,
+}
+
+tools["ellisonleao/glow.nvim"] = {
+	opt = true,
+	ft = "markdown",
+	config = function()
+		vim.api.nvim_set_keymap("n", "<leader>mp", ":Glow<CR>", {})
+	end,
+}
+
+tools["wakatime/vim-wakatime"] = { opt = false }
 
 return tools

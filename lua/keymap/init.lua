@@ -46,7 +46,7 @@ local plug_map = {
 	["n|gy"] = map_cr("lua vim.lsp.buf.type_definition()"):with_noremap():with_silent(),
 	["n|gh"] = map_cr("Lspsaga lsp_finder"):with_noremap():with_silent(),
 	["n|g0"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
-	["n|gi"] = map_cr("lua vim.lsp.buf.implementation()"):with_noremap():with_silent(),
+	["n|gI"] = map_cr("lua vim.lsp.buf.implementation()"):with_noremap():with_silent(),
 	["n|gl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
 	["n|gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
 	-- term
@@ -63,6 +63,7 @@ local plug_map = {
 	["n|<leader>xw"] = map_cr("TroubleToggle workspace_diagnostics"):with_noremap():with_silent(),
 	["n|<leader>xq"] = map_cr("TroubleToggle qikfix"):with_noremap():with_silent(),
 	["n|<leader>xl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent(),
+	["n|<leader>xt"] = map_cr("TodoTrouble"):with_noremap():with_silent(),
 	-- Plugin nvim-tree
 	["n|<C-n>"] = map_cr("NvimTreeToggle"):with_noremap():with_silent(),
 	["n|<Leader>nf"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent(),
@@ -71,6 +72,7 @@ local plug_map = {
 	["n|<Leader>fp"] = map_cu("lua require('telescope').extensions.project.project{}"):with_noremap():with_silent(),
 	["n|<Leader>fr"] = map_cu("lua require('telescope').extensions.frecency.frecency{}"):with_noremap():with_silent(),
 	["n|<Leader>fh"] = map_cu("Telescope search_history"):with_noremap():with_silent(),
+	["n|<leader>ft"] = map_cr("TodoTelescope"):with_noremap():with_silent(),
 	["n|<Leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent(),
 	["n|<Leader>sc"] = map_cu("Telescope colorscheme"):with_noremap():with_silent(),
 	["n|<Leader>fw"] = map_cu("Telescope grep_string"):with_noremap():with_silent(),

@@ -73,7 +73,7 @@ function config.rust_tools()
 end
 
 function config.lang_go()
-	require('go').setup()
+	require("go").setup()
 	-- vim.cmd([[
 	--         let g:go_def_mapping_enabled = 0 " 取消默认的gd映射
 	--         let g:go_doc_keywordprg_enabled = 0 "取消默认K映射

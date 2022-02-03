@@ -152,7 +152,8 @@ function config.luasnip()
 		history = true,
 		updateevents = "TextChanged,TextChangedI",
 	})
-	require("luasnip/loaders/from_vscode").load()
+	require("luasnip/loaders/from_vscode").lazy_load()
+	require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-snippets" } })
 end
 
 -- function config.tabnine()
@@ -186,19 +187,40 @@ function config.nullls()
 	local formatting = ls.builtins.formatting
 	local diagnostics = ls.builtins.diagnostics
 	local completion = ls.builtins.completion
+	local code_actions = ls.builtins.code_actions
 	local sources = {
 		formatting.stylua,
 		formatting.clang_format,
+		formatting.latexindent,
+		formatting.prettier,
+		formatting.shfmt,
 		formatting.gofumpt.with({
 			args = { "-extra" },
 		}),
 		formatting.goimports,
+
 		diagnostics.eslint,
+		diagnostics.shellcheck,
 		diagnostics.codespell,
+
+		code_actions.eslint,
+		-- code_actions.gitsigns,
+		code_actions.shellcheck,
+
 		completion.spell,
 	}
 	ls.setup({
 		sources = sources,
+		on_attach = function(client)
+			if client.resolved_capabilities.document_formatting then
+				vim.cmd([[
+                augroup Null_Format
+                    autocmd! * <buffer>
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                augroup END
+                ]])
+			end
+		end,
 	})
 end
 

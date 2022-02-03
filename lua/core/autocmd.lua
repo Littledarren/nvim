@@ -24,7 +24,6 @@ function autocmd.load_autocmds()
 			{ "BufWritePre", "MERGE_MSG", "setlocal noundofile" },
 			{ "BufWritePre", "*.tmp", "setlocal noundofile" },
 			{ "BufWritePre", "*.bak", "setlocal noundofile" },
-			{ "BufEnter", "*", "silent! lcd %:p:h" },
 			-- auto place to last edit
 			{
 				"BufReadPost",
@@ -65,6 +64,8 @@ function autocmd.load_autocmds()
 		ft = {
 			{ "BufNewFile,BufRead", "*.toml", " setf toml" },
 			{ "FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0" },
+			{ "FileType", "c", "set shiftwidth=2 " },
+			{ "FileType", "cpp", "set shiftwidth=2 " },
 			{
 				"FileType",
 				"dashboard",

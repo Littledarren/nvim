@@ -12,7 +12,7 @@ ui["catppuccin/nvim"] = {
 	as = "catppuccin",
 	config = conf.catppuccin,
 }
--- 启动页，当然也有一些功能。。。
+-- 然也有一些功能。。。
 ui["goolord/alpha-nvim"] = { opt = true, event = "BufWinEnter", config = conf.alpha }
 
 -- 类似indentline
@@ -25,10 +25,10 @@ ui["lukas-reineke/indent-blankline.nvim"] = {
 ui["dstein64/nvim-scrollview"] = { opt = true, event = "BufRead" }
 
 -- Show where your cursor moves when jumping large distances (e.g between windows). Fast and lightweight, written completely in Lua.
-ui["edluffy/specs.nvim"] = {
-	opt = true,
-	event = "CursorMoved",
-	config = conf.specs,
-}
+-- ui["edluffy/specs.nvim"] = {
+-- 	opt = true,
+-- 	event = "CursorMoved",
+-- 	config = conf.specs,
+-- }
 
 return ui

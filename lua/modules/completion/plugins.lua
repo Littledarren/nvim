@@ -56,7 +56,7 @@ completion["jose-elias-alvarez/null-ls.nvim"] = {
 completion["L3MON4D3/LuaSnip"] = {
 	after = "nvim-cmp",
 	config = conf.luasnip,
-	requires = "rafamadriz/friendly-snippets",
+	requires = { "rafamadriz/friendly-snippets" },
 }
 completion["windwp/nvim-autopairs"] = {
 	after = "nvim-cmp",
