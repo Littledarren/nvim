@@ -7,8 +7,8 @@ require("keymap.config")
 local plug_map = {
 	-- Bufferline
 	["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
-	["n|<leader>bn"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
-	["n|<leader>bp"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
+	["n|]b"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
+	["n|[b"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
 	["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap(),
 	["n|<leader>bd"] = map_cr("BufferLineSortByDirectory"):with_noremap(),
 	["n|<leader>b1"] = map_cr("BufferLineGoToBuffer 1"):with_noremap():with_silent(),
@@ -50,9 +50,9 @@ local plug_map = {
 	["n|gl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
 	["n|gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
 	-- term
-	["n|<A-d>"] = map_cu('lua require("FTerm").toggle()'):with_noremap():with_silent(),
-	["t|<A-d>"] = map_cu([[<C-\><C-n><CMD>lua require("FTerm").toggle()]]):with_noremap():with_silent(),
-	["t|<A-S-d>"] = map_cu([[<C-\><C-n><CMD>lua require("FTerm").exit()]]):with_noremap():with_silent(),
+	["n|<A-d>"] = map_cr(":ToggleTerm dir=%:p:h"):with_noremap():with_silent(),
+	["t|<A-d>"] = map_cu([[<C-\><C-n>:ToggleTerm ]]):with_noremap():with_silent(),
+	["t|<esc>"] = map_cu([[<C-\><C-n>]]):with_noremap():with_silent(),
 	["n|<A-g>"] = map_cu("Git"):with_noremap():with_silent(),
 	["n|gps"] = map_cr("G push"):with_noremap():with_silent(),
 	["n|gpl"] = map_cr("G pull"):with_noremap():with_silent(),
@@ -118,9 +118,10 @@ local plug_map = {
 	["n|<leader>sd"] = map_cu("DeleteSession"):with_noremap():with_silent(),
 	-- Plugin SnipRun
 	["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent(),
-	-- Plugin nvim-comment
-	["n|gc"] = map_cr("CommentToggle"):with_noremap():with_silent(),
-	["v|gc"] = map_cr("'<,'>CommentToggle"):with_noremap():with_silent(),
+	-- Plugin nvim-comment for <c-/> actually
+	["i|<c-_>"] = map_cmd("<c-o>:CommentToggle<cr>"):with_noremap():with_silent(),
+	["n|<c-_>"] = map_cr("CommentToggle"):with_noremap():with_silent(),
+	["v|<c-_>"] = map_cr("'<,'>CommentToggle"):with_noremap():with_silent(),
 	-- vim-go
 	["n|<leader>gb"] = map_cmd("<Plug>(go-build)"):with_silent(),
 	["n|<leader>gd"] = map_cmd("<Plug>(go-doc)"):with_silent(),

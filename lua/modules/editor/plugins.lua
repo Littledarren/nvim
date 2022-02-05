@@ -88,16 +88,16 @@ editor["karb94/neoscroll.nvim"] = {
 	config = conf.neoscroll,
 }
 -- 终端优化，感觉没啥用
-editor["vimlab/split-term.vim"] = {
-	opt = true,
-	cmd = { "Term", "VTerm" },
-}
--- editor["akinsho/nvim-toggleterm.lua"] = {
---     opt = true,
---     event = "BufRead",
---     config = conf.toggleterm
+-- editor["vimlab/split-term.vim"] = {
+-- 	opt = true,
+-- 	cmd = { "Term", "VTerm" },
 -- }
-editor["numtostr/FTerm.nvim"] = { opt = false }
+editor["akinsho/nvim-toggleterm.lua"] = {
+	opt = true,
+	event = "BufRead",
+	config = conf.toggleterm,
+}
+-- editor["numtostr/FTerm.nvim"] = { opt = false }
 
 -- show color for color code like #ff00ff
 editor["norcalli/nvim-colorizer.lua"] = {
@@ -135,8 +135,12 @@ editor["famiu/bufdelete.nvim"] = {
 	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
 }
 editor["ojroques/vim-oscyank"] = {
-	opt = true,
-	cmd = { "OSCYank" },
+	opt = false,
+	config = function()
+		vim.cmd([[
+            autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
+        ]])
+	end,
 }
 -- statusline
 editor["arkav/lualine-lsp-progress"] = {

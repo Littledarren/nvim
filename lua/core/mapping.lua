@@ -26,6 +26,7 @@ local def_map = {
 	-- Insert
 	["i|<C-u>"] = map_cmd("<C-G>u<C-U>"):with_noremap(),
 	["i|<C-b>"] = map_cmd("<Left>"):with_noremap(),
+	["i|<C-f>"] = map_cmd("<Right>"):with_noremap(),
 	["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap(),
 	-- command line
 	["c|<C-b>"] = map_cmd("<Left>"):with_noremap(),

@@ -133,14 +133,15 @@ function config.cmp()
 		},
 		-- You should specify your *installed* sources.
 		sources = {
-			{ name = "nvim_lsp" },
-			{ name = "nvim_lua" },
-			{ name = "luasnip" },
+			{ name = "buffer" },
 			{ name = "path" },
+			{ name = "nvim_lsp" },
+			{ name = "luasnip" },
+			{ name = "emoji" },
+			{ name = "nvim_lua" },
+			{ name = "copilot" },
 			{ name = "spell" },
 			{ name = "tmux" },
-			{ name = "orgmode" },
-			{ name = "buffer" },
 			{ name = "latex_symbols" },
 			-- {name = 'cmp_tabnine'}
 		},

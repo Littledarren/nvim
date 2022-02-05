@@ -27,25 +27,22 @@ completion["kosayoda/nvim-lightbulb"] = {
 }
 -- 展示函数签名
 completion["ray-x/lsp_signature.nvim"] = { opt = true, after = "nvim-lspconfig" }
+-- 补全
 completion["hrsh7th/nvim-cmp"] = {
 	config = conf.cmp,
 	event = "InsertEnter",
 	requires = {
 		{ "lukas-reineke/cmp-under-comparator" },
-		{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
 		{ "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" },
 		{ "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
-		{ "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
 		{ "hrsh7th/cmp-path", after = "cmp-tmux" },
-		{ "f3fora/cmp-spell", after = "cmp-path" },
 		{ "hrsh7th/cmp-buffer", after = "cmp-spell" },
+		{ "hrsh7th/cmp-emoji", after = "cmp-spell" },
+		{ "hrsh7th/cmp-copilot", after = "cmp-latex-symbols" },
+		{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
+		{ "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
+		{ "f3fora/cmp-spell", after = "cmp-path" },
 		{ "kdheepak/cmp-latex-symbols", after = "cmp-buffer" },
-		-- {
-		--     'tzachar/cmp-tabnine',
-		--     run = './install.sh',
-		--     after = 'cmp-spell',
-		--     config = conf.tabnine
-		-- }
 	},
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {

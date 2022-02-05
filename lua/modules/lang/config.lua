@@ -90,9 +90,9 @@ function config.lang_tex()
 	vim.cmd([[
     call vimtex#init()
     let g:tex_lavor='latex'
-let g:vimtex_texcount_custom_arg=' -ch -total'
-au FileType tex map <buffer> <silent>  <leader>lw :VimtexCountWords!  <CR><CR>
-let g:vimtex_compiler_latexmk_engines = {
+    let g:vimtex_texcount_custom_arg=' -ch -total'
+    au FileType tex map <buffer> <silent>  <leader>lw :VimtexCountWords!  <CR><CR>
+    let g:vimtex_compiler_latexmk_engines = {
             \ '_'                : '-pdf',
             \ 'pdflatex'         : '-pdf',
             \ 'dvipdfex'         : '-pdfdvi',
@@ -102,7 +102,7 @@ let g:vimtex_compiler_latexmk_engines = {
             \ 'context (luatex)' : '-pdf -pdflatex=context',
             \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
             \}
-let g:vimtex_compiler_latexmk = {
+    let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : '',
             \ 'callback' : 1,
             \ 'continuous' : 1,
@@ -116,23 +116,23 @@ let g:vimtex_compiler_latexmk = {
                 \   '-interaction=nonstopmode',
                 \ ],
                 \}
-let g:vimtex_quickfix_mode = 0
-let g:vimtex_view_general_viewer = 'zathura'
-let g:vimtex_view_method = 'zathura'
+    let g:vimtex_quickfix_mode = 0
+    let g:vimtex_view_general_viewer = 'zathura'
+    let g:vimtex_view_method = 'zathura'
 
-function! CloseViewers()
-    " Close viewers on quit
-    if executable('xdotool') && exists('b:vimtex')
-                \ && exists('b:vimtex.viewer') && b:vimtex.viewer.xwin_id > 0
-        call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
-    endif
-endfunction
+    function! CloseViewers()
+        " Close viewers on quit
+        if executable('xdotool') && exists('b:vimtex')
+                    \ && exists('b:vimtex.viewer') && b:vimtex.viewer.xwin_id > 0
+            call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
+        endif
+    endfunction
 
-augroup vimtex_event_1
-    au!
-    au User VimtexEventQuit     VimtexClean
-    au User VimtexEventQuit call CloseViewers()
-augroup END
+    augroup vimtex_event_1
+        au!
+        au User VimtexEventQuit     VimtexClean
+        au User VimtexEventQuit call CloseViewers()
+    augroup END
     ]])
 end
 
