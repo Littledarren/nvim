@@ -1,5 +1,39 @@
 local config = {}
 
+local previewers = require("telescope.previewers")
+local Job = require("plenary.job")
+
+-- do not preview binary & big text file
+local new_maker = function(filepath, bufnr, opts)
+	filepath = vim.fn.expand(filepath)
+	Job
+		:new({
+			command = "file",
+			args = { "--mime-type", "-b", filepath },
+			on_exit = function(j)
+				local mime_type = vim.split(j:result()[1], "/")[1]
+				if mime_type == "text" then
+					vim.loop.fs_stat(filepath, function(_, stat)
+						if not stat then
+							return
+						end
+						if stat.size > 100000 then
+							return
+						else
+							previewers.buffer_previewer_maker(filepath, bufnr, opts)
+						end
+					end)
+				else
+					-- maybe we want to write something to the buffer here
+					vim.schedule(function()
+						vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
+					end)
+				end
+			end,
+		})
+		:sync()
+end
+
 function config.telescope()
 	if not packer_plugins["sqlite.lua"].loaded then
 		vim.cmd([[packadd sqlite.lua]])
@@ -22,18 +56,13 @@ function config.telescope()
 
 	require("telescope").setup({
 		defaults = {
+			buffer_previewer_maker = new_maker,
 			prompt_prefix = "🔭 ",
 			selection_caret = " ",
 			layout_config = {
 				horizontal = { prompt_position = "bottom", results_width = 0.6 },
 				vertical = { mirror = false },
 			},
-			-- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-			-- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-			-- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-			-- file_sorter = require("telescope.sorters").get_fuzzy_file,
-			-- file_ignore_patterns = {},
-			-- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 			path_display = { "absolute" },
 			winblend = 0,
 			border = {},
@@ -52,10 +81,10 @@ function config.telescope()
 			set_env = { ["COLORTERM"] = "truecolor" },
 			mappings = {
 				n = {
-					["<A-h>"] = action_layout.toggle_preview,
+					["<A-p>"] = action_layout.toggle_preview,
 				},
 				i = {
-					["<A-h>"] = action_layout.toggle_preview,
+					["<A-p>"] = action_layout.toggle_preview,
 				},
 			},
 		},

@@ -68,6 +68,19 @@ tools["ellisonleao/glow.nvim"] = {
 		vim.api.nvim_set_keymap("n", "<leader>mp", ":Glow<CR>", {})
 	end,
 }
+tools["nvim-neorg/neorg"] = {
+	opt = true,
+	ft = "norg",
+	after = { "nvim-treesitter", "telescope.nvim" },
+	config = function()
+		require("neorg").setup({
+			load = {
+				["core.defaults"] = {},
+			},
+		})
+	end,
+	requires = "nvim-lua/plenary.nvim",
+}
 
 tools["wakatime/vim-wakatime"] = {
 	cond = function()
