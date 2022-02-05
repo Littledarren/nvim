@@ -31,15 +31,13 @@ tools["nvim-telescope/telescope-frecency.nvim"] = {
 	requires = { { "tami5/sqlite.lua", opt = true } },
 }
 
+tools["sudormrfbin/cheatsheet.nvim"] = { opt = true, cmd = "Cheatsheet" }
 -- popular
 tools["folke/which-key.nvim"] = {
 	config = function()
 		require("which-key").setup({})
 	end,
 }
--- StartupTime profile
-tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
-
 -- a more adventurous wildmenu
 tools["gelguy/wilder.nvim"] = {
 	event = "CmdlineEnter",
@@ -47,7 +45,10 @@ tools["gelguy/wilder.nvim"] = {
 	requires = { { "romgrk/fzy-lua-native", after = "wilder.nvim" } },
 }
 
-tools["bfredl/nvim-luadev"] = {}
+tools["bfredl/nvim-luadev"] = {
+	opt = true,
+	cmd = "Luadev",
+}
 -- align ...
 tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 
@@ -80,5 +81,7 @@ tools["wakatime/vim-wakatime"] = {
 		return false
 	end,
 }
+-- StartupTime profile
+tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 
 return tools

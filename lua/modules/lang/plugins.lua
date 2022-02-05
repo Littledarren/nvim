@@ -14,6 +14,7 @@ lang["lervag/vimtex"] = {
 }
 
 lang["rust-lang/rust.vim"] = { opt = true, ft = "rust" }
+
 lang["simrat39/rust-tools.nvim"] = {
 	opt = true,
 	ft = "rust",
