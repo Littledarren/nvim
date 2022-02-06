@@ -1,10 +1,10 @@
 local config = {}
 
-local previewers = require("telescope.previewers")
-local Job = require("plenary.job")
-
 -- do not preview binary & big text file
 local new_maker = function(filepath, bufnr, opts)
+	local previewers = require("telescope.previewers")
+	local Job = require("plenary.job")
+
 	filepath = vim.fn.expand(filepath)
 	Job
 		:new({
