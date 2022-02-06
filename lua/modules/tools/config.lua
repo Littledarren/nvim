@@ -50,6 +50,9 @@ function config.telescope()
 	if not packer_plugins["telescope-frecency.nvim"].loaded then
 		vim.cmd([[packadd telescope-frecency.nvim]])
 	end
+	if not packer_plugins["telescope-emoji.nvim"].loaded then
+		vim.cmd([[packadd telescope-emoji.nvim]])
+	end
 
 	local actions = require("telescope.actions")
 	local action_layout = require("telescope.actions.layout")
@@ -107,6 +110,7 @@ function config.telescope()
 
 	require("telescope").load_extension("fzf")
 	require("telescope").load_extension("project")
+	require("telescope").load_extension("emoji")
 	require("telescope").load_extension("frecency")
 end
 

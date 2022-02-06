@@ -73,7 +73,7 @@ local plug_map = {
 	["n|<Leader>fb"] = map_cu("Telescope buffers"):with_noremap():with_silent(),
 	["n|<Leader>fc"] = map_cu("Telescope colorscheme"):with_noremap():with_silent(),
 	["n|<Leader>fd"] = map_cu("Telescope diagnostics"):with_noremap():with_silent(),
-	["n|<Leader>fe"] = map_cu("Telescope resume"):with_noremap():with_silent(),
+	["n|<Leader>fe"] = map_cu("Telescope emoji"):with_noremap():with_silent(),
 	["n|<Leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent(),
 	["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap():with_silent(),
 	["n|<Leader>fh"] = map_cu("Telescope search_history"):with_noremap():with_silent(),
@@ -160,6 +160,7 @@ local plug_map = {
 	["n|<F9>"] = map_cr("lua require('dap').step_out()"):with_noremap():with_silent(),
 	["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap():with_silent(),
 	["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap():with_silent(),
+	-- treesitter object
 	["o|m"] = map_cu([[lua require('tsht').nodes()]]):with_silent(),
 }
 

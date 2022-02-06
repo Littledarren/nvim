@@ -12,6 +12,9 @@ ui["catppuccin/nvim"] = {
 	as = "catppuccin",
 	config = conf.catppuccin,
 }
+ui["navarasu/onedark.nvim"] = {
+	opt = false,
+}
 -- 然也有一些功能。。。
 ui["goolord/alpha-nvim"] = { opt = true, event = "BufWinEnter", config = conf.alpha }
 

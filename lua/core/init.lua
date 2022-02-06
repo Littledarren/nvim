@@ -119,7 +119,7 @@ local load_core = function()
 	require("core.autocmd")
 	pack.load_compile()
 
-	vim.cmd([[colorscheme catppuccin]])
+	vim.cmd([[colorscheme onedark]])
 end
 
 load_core()
