@@ -82,6 +82,7 @@ function config.cmp()
 					tmux = "[TMUX]",
 					luasnip = "[SNIP]",
 					spell = "[SPELL]",
+					copilot = "[COPILOT]",
 				})[entry.source.name]
 
 				return vim_item

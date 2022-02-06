@@ -59,6 +59,15 @@ completion["windwp/nvim-autopairs"] = {
 	after = "nvim-cmp",
 	config = conf.autopairs,
 }
-completion["github/copilot.vim"] = { opt = true, cmd = "Copilot" }
+completion["github/copilot.vim"] = {
+	opt = true,
+	cmd = "Copilot",
+	setup = function()
+		vim.cmd([[
+            imap <silent><script><expr> <A-Right> copilot#Accept("")
+            let g:copilot_no_tab_map = v:true
+        ]])
+	end,
+}
 
 return completion
