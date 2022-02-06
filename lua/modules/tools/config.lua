@@ -35,24 +35,11 @@ local new_maker = function(filepath, bufnr, opts)
 end
 
 function config.telescope()
-	if not packer_plugins["sqlite.lua"].loaded then
-		vim.cmd([[packadd sqlite.lua]])
-	end
-
-	if not packer_plugins["telescope-fzf-native.nvim"].loaded then
-		vim.cmd([[packadd telescope-fzf-native.nvim]])
-	end
-
-	if not packer_plugins["telescope-project.nvim"].loaded then
-		vim.cmd([[packadd telescope-project.nvim]])
-	end
-
-	if not packer_plugins["telescope-frecency.nvim"].loaded then
-		vim.cmd([[packadd telescope-frecency.nvim]])
-	end
-	if not packer_plugins["telescope-emoji.nvim"].loaded then
-		vim.cmd([[packadd telescope-emoji.nvim]])
-	end
+	vim.cmd([[packadd sqlite.lua]])
+	vim.cmd([[packadd telescope-fzf-native.nvim]])
+	vim.cmd([[packadd telescope-project.nvim]])
+	vim.cmd([[packadd telescope-frecency.nvim]])
+	vim.cmd([[packadd telescope-emoji.nvim]])
 
 	local actions = require("telescope.actions")
 	local action_layout = require("telescope.actions.layout")

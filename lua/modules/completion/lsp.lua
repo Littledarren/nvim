@@ -1,14 +1,7 @@
-if not packer_plugins["nvim-lsp-installer"].loaded then
-	vim.cmd([[packadd nvim-lsp-installer]])
-end
-
-if not packer_plugins["lsp_signature.nvim"].loaded then
-	vim.cmd([[packadd lsp_signature.nvim]])
-end
-
-if not packer_plugins["lspsaga.nvim"].loaded then
-	vim.cmd([[packadd lspsaga.nvim]])
-end
+vim.cmd([[packadd nvim-lsp-installer]])
+vim.cmd([[packadd lsp_signature.nvim]])
+vim.cmd([[packadd lspsaga.nvim]])
+vim.cmd([[packadd cmp-nvim-lsp]])
 
 local nvim_lsp = require("lspconfig")
 local saga = require("lspsaga")
@@ -33,30 +26,14 @@ lsp_installer.settings({
 	},
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument.completion.completionItem.documentationFormat = {
-	"markdown",
-	"plaintext",
-}
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = {
-	valueSet = { 1 },
-}
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-	properties = { "documentation", "detail", "additionalTextEdits" },
-}
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Override default format setting
 local function custom_attach(client)
 	require("lsp_signature").on_attach({
 		bind = true,
-		floating_window = false,
+		use_lspsaga = false,
+		floating_window = true,
 		fix_pos = true,
 		hint_enable = true,
 		hi_parameter = "Search",
@@ -72,7 +49,6 @@ local function custom_attach(client)
             augroup END
         ]])
 	end
-
 end
 
 local function switch_source_header_splitcmd(bufnr, splitcmd)
@@ -95,7 +71,7 @@ local enhance_server_opts = {
 	["sumneko_lua"] = function(opts)
 		opts.settings = {
 			Lua = {
-				diagnostics = { globals = { "vim", "packer_plugins" } },
+				diagnostics = { globals = { "vim" } },
 				workspace = {
 					library = {
 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,

@@ -58,7 +58,7 @@ editor["andymass/vim-matchup"] = {
 	config = conf.matchup,
 }
 -- 让jk移动更快
-editor["rhysd/accelerated-jk"] = { opt = true }
+editor["rhysd/accelerated-jk"] = {}
 -- elimate the hlsearch after searching
 editor["romainl/vim-cool"] = {
 	opt = true,
@@ -80,7 +80,7 @@ editor["phaazon/hop.nvim"] = {
 		require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 	end,
 }
-editor["hrsh7th/vim-eft"] = { opt = true }
+editor["hrsh7th/vim-eft"] = {}
 -- 平滑滚动
 editor["karb94/neoscroll.nvim"] = {
 	opt = true,
@@ -179,12 +179,13 @@ editor["folke/trouble.nvim"] = {
 	config = conf.trouble,
 }
 
--- 快跑！
-editor["thinca/vim-quickrun"] = { opt = true, cmd = { "QuickRun", "Q" } }
 -- 我是说代码快跑
 editor["michaelb/sniprun"] = {
 	opt = true,
 	run = "bash ./install.sh",
 	cmd = { "SnipRun", "'<,'>SnipRun" },
 }
+
+-- beautiful vim.notify
+editor["rcarriga/nvim-notify"] = {}
 return editor

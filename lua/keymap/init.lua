@@ -120,13 +120,12 @@ local plug_map = {
 	-- Plugin lua dev
 	["n|<F2>"] = map_cmd("<Plug>(Luadev-RunLine)"):with_silent(),
 	["n|<F1>"] = map_cmd("<Plug>(Luadev-Run)"):with_silent(),
-	-- Plugin split-term
-	["n|<F5>"] = map_cr("QuickRun"):with_noremap():with_silent(),
 	-- Plugin auto_session
 	["n|<leader>ss"] = map_cu("SaveSession"):with_noremap():with_silent(),
 	["n|<leader>sr"] = map_cu("RestoreSession"):with_noremap():with_silent(),
 	["n|<leader>sd"] = map_cu("DeleteSession"):with_noremap():with_silent(),
 	-- Plugin SnipRun
+	["n|<F5>"] = map_cr("%SnipRun"):with_noremap():with_silent(),
 	["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent(),
 	-- Plugin nvim-comment for <c-/> actually
 	["i|<c-_>"] = map_cmd("<c-o>:CommentToggle<cr>"):with_noremap():with_silent(),

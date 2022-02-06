@@ -5,6 +5,7 @@ local conf = require("modules.ui.config")
 ui["kyazdani42/nvim-web-devicons"] = { opt = false }
 -- colorscheme
 -- ui["sainnhe/edge"] = { opt = false, config = conf.edge }
+ui["rebelot/kanagawa.nvim"] = { opt = false, config = conf.kanagawa }
 -- ui["lifepillar/vim-gruvbox8"] = { opt = false }
 -- colorscheme maybe?
 ui["catppuccin/nvim"] = {

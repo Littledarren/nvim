@@ -20,7 +20,7 @@ local def_map = {
 	["n|<A-]>"] = map_cr("vertical resize +5"):with_silent(),
 	["n|<A-;>"] = map_cr("resize -2"):with_silent(),
 	["n|<A-'>"] = map_cr("resize +2"):with_silent(),
-	["n|<A-q>"] = map_cmd(":Bwipeout<CR>"),
+	["n|<A-q>"] = map_cmd(":bd<CR>"),
 	["n|<A-S-q>"] = map_cmd(":q!<CR>"),
 	["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"),
 	["n|[q"] = map_cr("cprevious"),

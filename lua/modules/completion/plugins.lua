@@ -4,9 +4,7 @@ local conf = require("modules.completion.config")
 completion["neovim/nvim-lspconfig"] = {
 	opt = true,
 	event = "BufReadPre",
-	config = function()
-		require("modules.completion.lsp")
-	end,
+	config = conf.nvim_lsp,
 }
 completion["williamboman/nvim-lsp-installer"] = {
 	opt = true,
