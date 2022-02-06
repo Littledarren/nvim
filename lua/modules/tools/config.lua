@@ -82,6 +82,7 @@ function config.telescope()
 			mappings = {
 				n = {
 					["<A-p>"] = action_layout.toggle_preview,
+					["q"] = actions.close,
 				},
 				i = {
 					["<A-p>"] = action_layout.toggle_preview,
