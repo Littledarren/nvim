@@ -88,4 +88,10 @@ tools["wakatime/vim-wakatime"] = {
 -- StartupTime profile
 tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 
+tools["nathom/filetype.nvim"] = {
+	config = function()
+		require("filetype").setup({})
+	end,
+}
+
 return tools
