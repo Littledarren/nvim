@@ -138,16 +138,16 @@ function config.cmp()
 		},
 		-- You should specify your *installed* sources.
 		sources = {
-			{ name = "buffer" },
-			{ name = "path" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
+			{ name = "buffer" },
+			{ name = "path" },
+			{ name = "latex_symbols" },
 			{ name = "emoji" },
 			{ name = "nvim_lua" },
-			{ name = "copilot" },
-			{ name = "spell" },
 			{ name = "tmux" },
-			{ name = "latex_symbols" },
+			{ name = "spell" },
+			{ name = "copilot" },
 			-- {name = 'cmp_tabnine'}
 		},
 	})
@@ -203,13 +203,16 @@ function config.nullls()
 	local ls = require("null-ls")
 	local formatting = ls.builtins.formatting
 	local diagnostics = ls.builtins.diagnostics
-	local completion = ls.builtins.completion
+	-- local completion = ls.builtins.completion
 	local code_actions = ls.builtins.code_actions
 	local sources = {
 		formatting.stylua,
 		formatting.clang_format,
 		formatting.latexindent,
-		formatting.prettier,
+		formatting.prettier.with({
+			disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+		}),
+		formatting.eslint,
 		formatting.shfmt,
 		formatting.gofumpt.with({
 			args = { "-extra" },
@@ -224,7 +227,7 @@ function config.nullls()
 		-- code_actions.gitsigns,
 		code_actions.shellcheck,
 
-		completion.spell,
+		-- completion.spell,
 	}
 	ls.setup({
 		sources = sources,
