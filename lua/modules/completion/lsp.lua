@@ -207,6 +207,13 @@ local enhance_server_opts = {
 			custom_attach(client)
 		end
 	end,
+	["texlab"] = function(opts)
+		-- Disable `texlab`'s format
+		opts.on_attach = function(client)
+			client.resolved_capabilities.document_formatting = false
+			custom_attach(client)
+		end
+	end,
 	["html"] = function(opts)
 		opts.cmd = { "html-languageserver", "--stdio" }
 		opts.filetypes = { "html" }
