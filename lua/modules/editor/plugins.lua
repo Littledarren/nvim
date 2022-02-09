@@ -160,8 +160,6 @@ editor["akinsho/nvim-bufferline.lua"] = {
 }
 -- 文件浏览器
 editor["kyazdani42/nvim-tree.lua"] = {
-	opt = true,
-	cmd = { "NvimTreeToggle", "NvimTreeOpen" },
 	config = conf.nvim_tree,
 }
 -- 类似vscode的git
@@ -188,4 +186,5 @@ editor["michaelb/sniprun"] = {
 
 -- beautiful vim.notify
 editor["rcarriga/nvim-notify"] = {}
+
 return editor

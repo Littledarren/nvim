@@ -93,5 +93,6 @@ tools["nathom/filetype.nvim"] = {
 		require("filetype").setup({})
 	end,
 }
+tools["lewis6991/impatient.nvim"] = {}
 
 return tools
