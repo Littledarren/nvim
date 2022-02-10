@@ -1,10 +1,16 @@
 local lang = {}
 local conf = require("modules.lang.config")
 
-lang["ray-x/go.nvim"] = {
+-- lang["ray-x/go.nvim"] = {
+-- 	opt = true,
+-- 	ft = "go",
+-- 	config = conf.lang_go,
+-- }
+lang["fatih/vim-go"] = {
 	opt = true,
 	ft = "go",
-	config = conf.lang_go,
+	run = ":GoInstallBinaries",
+	setup = conf.lang_go,
 }
 
 lang["lervag/vimtex"] = {
