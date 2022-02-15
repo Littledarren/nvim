@@ -214,6 +214,7 @@ function config.nullls()
 		}),
 		formatting.eslint,
 		formatting.shfmt,
+		formatting.black,
 		formatting.gofumpt.with({
 			args = { "-extra" },
 		}),
