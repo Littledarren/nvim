@@ -75,7 +75,7 @@ tools["ellisonleao/glow.nvim"] = {
 
 tools["wakatime/vim-wakatime"] = {
 	cond = function()
-		local allowedMachines = { "LAPTOP-syncrack" }
+		local allowedMachines = { "LAPTOP-syncrack", "architect" }
 		local hostName = vim.loop.os_gethostname()
 		for _, value in ipairs(allowedMachines) do
 			if value == hostName then
