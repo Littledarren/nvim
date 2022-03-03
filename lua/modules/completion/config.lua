@@ -212,7 +212,7 @@ function config.nullls()
 		formatting.prettier.with({
 			disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 		}),
-		formatting.eslint,
+		formatting.eslint_d,
 		formatting.shfmt,
 		formatting.black,
 		formatting.gofumpt.with({
@@ -220,11 +220,11 @@ function config.nullls()
 		}),
 		formatting.goimports,
 
-		diagnostics.eslint,
+		diagnostics.eslint_d,
 		diagnostics.shellcheck,
 		diagnostics.codespell,
 
-		code_actions.eslint,
+		code_actions.eslint_d,
 		-- code_actions.gitsigns,
 		code_actions.shellcheck,
 

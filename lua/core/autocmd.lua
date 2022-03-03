@@ -60,9 +60,9 @@ function autocmd.load_autocmds()
 			{ "VimResized", "*", [[tabdo wincmd =]] },
 		},
 		ft = {
-			{ "BufNewFile,BufRead", "*.toml", " setf toml" },
+			-- { "BufNewFile,BufRead", "*.toml", " setf toml" },
 			{ "FileType", "make", "setlocal noexpandtab shiftwidth=8 softtabstop=0" },
-			{ "FileType", "c,cpp", "setlocal tabstop=2 shiftwidth=2 " },
+			{ "FileType", "c,cpp,javascript,typescript", "setlocal tabstop=2 shiftwidth=2 " },
 		},
 		yank = {
 			{

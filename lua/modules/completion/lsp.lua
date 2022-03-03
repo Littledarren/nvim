@@ -26,8 +26,6 @@ lsp_installer.settings({
 	},
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 -- Override default format setting
 local function custom_attach(client)
 	require("lsp_signature").on_attach({
@@ -234,6 +232,8 @@ local enhance_server_opts = {
 		}
 	end,
 }
+
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lsp_installer.on_server_ready(function(server)
 	local opts = {
