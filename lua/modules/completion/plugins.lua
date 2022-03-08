@@ -36,7 +36,6 @@ completion["hrsh7th/nvim-cmp"] = {
 		{ "hrsh7th/cmp-path", after = "cmp-tmux" },
 		{ "hrsh7th/cmp-buffer", after = "cmp-spell" },
 		{ "hrsh7th/cmp-emoji", after = "cmp-spell" },
-		{ "hrsh7th/cmp-copilot", after = "cmp-latex-symbols" },
 		{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
 		{ "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
 		{ "f3fora/cmp-spell", after = "cmp-path" },
@@ -56,16 +55,6 @@ completion["L3MON4D3/LuaSnip"] = {
 completion["windwp/nvim-autopairs"] = {
 	after = "nvim-cmp",
 	config = conf.autopairs,
-}
-completion["github/copilot.vim"] = {
-	opt = true,
-	cmd = "Copilot",
-	setup = function()
-		vim.cmd([[
-            imap <silent><script><expr> <A-Right> copilot#Accept("")
-            let g:copilot_no_tab_map = v:true
-        ]])
-	end,
 }
 
 return completion

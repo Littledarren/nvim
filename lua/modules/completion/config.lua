@@ -86,7 +86,6 @@ function config.cmp()
 					tmux = "[TMUX]",
 					luasnip = "[SNIP]",
 					spell = "[SPELL]",
-					copilot = "[COPILOT]",
 				})[entry.source.name]
 
 				return vim_item
@@ -147,7 +146,6 @@ function config.cmp()
 			{ name = "nvim_lua" },
 			{ name = "tmux" },
 			{ name = "spell" },
-			{ name = "copilot" },
 			-- {name = 'cmp_tabnine'}
 		},
 	})
@@ -161,11 +159,6 @@ function config.luasnip()
 	require("luasnip/loaders/from_vscode").lazy_load()
 	require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-snippets" } })
 end
-
--- function config.tabnine()
---     local tabnine = require('cmp_tabnine.config')
---     tabnine:setup({max_line = 1000, max_num_results = 20, sort = true})
--- end
 
 function config.autopairs()
 	require("nvim-autopairs").setup({
