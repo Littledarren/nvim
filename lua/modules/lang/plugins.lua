@@ -14,8 +14,6 @@ lang["fatih/vim-go"] = {
 }
 
 lang["lervag/vimtex"] = {
-	opt = true,
-	ft = "tex",
 	config = conf.lang_tex,
 }
 

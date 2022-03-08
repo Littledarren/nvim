@@ -88,7 +88,6 @@ end
 
 function config.lang_tex()
 	vim.cmd([[
-    call vimtex#init()
     let g:tex_lavor='latex'
     let g:vimtex_texcount_custom_arg=' -ch -total'
     au FileType tex map <buffer> <silent>  <leader>lw :VimtexCountWords!  <CR><CR>

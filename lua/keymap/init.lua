@@ -61,7 +61,7 @@ local plug_map = {
 	["n|gR"] = map_cr("TroubleToggle lsp_references"):with_noremap():with_silent(),
 	["n|<leader>xd"] = map_cr("TroubleToggle document_diagnostics"):with_noremap():with_silent(),
 	["n|<leader>xw"] = map_cr("TroubleToggle workspace_diagnostics"):with_noremap():with_silent(),
-	["n|<leader>xq"] = map_cr("TroubleToggle qickfix"):with_noremap():with_silent(),
+	["n|<leader>xq"] = map_cr("TroubleToggle quickfix"):with_noremap():with_silent(),
 	["n|<leader>xl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent(),
 	["n|<leader>xt"] = map_cr("TodoTrouble"):with_noremap():with_silent(),
 	-- Plugin nvim-tree
