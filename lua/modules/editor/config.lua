@@ -14,7 +14,7 @@ function config.nvim_treesitter()
 
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = "maintained",
-		highlight = { enable = true, disable = { "vim" } },
+		highlight = { enable = true, disable = { "vim", "latex" } },
 		textobjects = {
 			select = {
 				enable = true,
@@ -29,19 +29,19 @@ function config.nvim_treesitter()
 				enable = true,
 				set_jumps = true, -- whether to set jumps in the jumplist
 				goto_next_start = {
-					["]["] = "@function.outer",
-					["]m"] = "@class.outer",
+					["]f"] = "@function.outer",
+					["]c"] = "@class.outer",
 				},
 				goto_next_end = {
-					["]]"] = "@function.outer",
-					["]M"] = "@class.outer",
+					["]F"] = "@function.outer",
+					["]C"] = "@class.outer",
 				},
 				goto_previous_start = {
-					["[["] = "@function.outer",
-					["[m"] = "@class.outer",
+					["[f"] = "@function.outer",
+					["[c"] = "@class.outer",
 				},
 				goto_previous_end = {
-					["[]"] = "@function.outer",
+					["[F"] = "@function.outer",
 					["[M"] = "@class.outer",
 				},
 			},

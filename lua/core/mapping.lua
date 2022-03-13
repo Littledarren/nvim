@@ -25,11 +25,13 @@ local def_map = {
 	["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"),
 	["n|[q"] = map_cr("cprevious"),
 	["n|]q"] = map_cr("cnext"),
+	["n|<C-s>"] = map_cr("update"):with_noremap(),
 	-- Insert
 	["i|<C-u>"] = map_cmd("<C-G>u<C-U>"):with_noremap(),
 	["i|<C-b>"] = map_cmd("<Left>"):with_noremap(),
 	["i|<C-f>"] = map_cmd("<Right>"):with_noremap(),
 	["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap(),
+	["i|<C-s>"] = map_cmd("<c-o>:update<cr>"):with_noremap(),
 	-- command line
 	["c|<C-b>"] = map_cmd("<Left>"):with_noremap(),
 	["c|<C-f>"] = map_cmd("<Right>"):with_noremap(),

@@ -30,16 +30,16 @@ completion["hrsh7th/nvim-cmp"] = {
 	config = conf.cmp,
 	event = "InsertEnter",
 	requires = {
-		{ "lukas-reineke/cmp-under-comparator" },
-		{ "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" },
-		{ "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" },
-		{ "hrsh7th/cmp-path", after = "cmp-tmux" },
-		{ "hrsh7th/cmp-buffer", after = "cmp-spell" },
-		{ "hrsh7th/cmp-emoji", after = "cmp-spell" },
-		{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" },
-		{ "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" },
-		{ "f3fora/cmp-spell", after = "cmp-path" },
-		{ "kdheepak/cmp-latex-symbols", after = "cmp-buffer" },
+		{ "lukas-reineke/cmp-under-comparator" }, -- better sort
+		{ "hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip" }, -- for lsp server
+		{ "hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp" }, -- nvim lua
+		{ "hrsh7th/cmp-path", after = "cmp-tmux" }, -- for path?
+		{ "hrsh7th/cmp-buffer", after = "cmp-spell" }, -- from buffer
+		{ "hrsh7th/cmp-emoji", after = "cmp-spell" }, -- for emoji
+		{ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }, -- for snippets
+		{ "andersevenrud/cmp-tmux", after = "cmp-nvim-lua" }, --  for tmux
+		{ "f3fora/cmp-spell", after = "cmp-path" }, -- for correct spell
+		{ "kdheepak/cmp-latex-symbols", after = "cmp-buffer" }, -- for latex
 	},
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {

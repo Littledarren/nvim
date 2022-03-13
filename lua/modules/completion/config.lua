@@ -86,6 +86,7 @@ function config.cmp()
 					tmux = "[TMUX]",
 					luasnip = "[SNIP]",
 					spell = "[SPELL]",
+					latex_symbols = "[LATEX]",
 				})[entry.source.name]
 
 				return vim_item

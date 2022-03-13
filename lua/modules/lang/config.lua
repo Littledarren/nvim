@@ -31,7 +31,7 @@ function config.rust_tools()
 				-- This option is only respected when only_current_line and
 				-- autoSetHints both are true.
 				only_current_line_autocmd = "CursorHold",
-				-- wheter to show parameter hints with the inlay hints or not
+				-- wheater to show parameter hints with the inlay hints or not
 				show_parameter_hints = true,
 				-- prefix for parameter hints
 				parameter_hints_prefix = "<- ",
@@ -84,11 +84,33 @@ function config.lang_go()
 	        let g:go_version_warning = 1
 	        let g:godef_split=2
     ]])
+	local bind = require("keymap.bind")
+	local map_cr = bind.map_cr
+	-- vim-go
+	local go_map = {
+		["n|<leader>gau"] = map_cr("GoAddTest"):with_silent(),
+		["n|<leader>gat"] = map_cr("GoAddTag"):with_silent(),
+		["n|<leader>gb"] = map_cr("GoBuild"):with_silent(),
+		["n|<leader>gc"] = map_cr("GoCoverageToggle"):with_silent(),
+		["n|<leader>gd"] = map_cr("GoDoc"):with_silent(),
+		["n|<leader>ge"] = map_cr("GoIfErr"):with_silent(),
+		["n|<leader>gf"] = map_cr("GoFmt"):with_silent(),
+		["n|<leader>gg"] = map_cr("GoGenerate"):with_silent(),
+		["n|<leader>gi"] = map_cr("GoImpl"):with_silent(),
+		["n|<leader>gl"] = map_cr("GoLint"):with_silent(),
+		["n|<leader>gm"] = map_cr("GoMetaLinter"):with_silent(),
+		["n|<leader>gh"] = map_cr("GoAlternate!"):with_silent(),
+		["n|<leader>gr"] = map_cr("GoRename"):with_silent(),
+		["n|<leader>gtf"] = map_cr("GoTestFunc"):with_silent(),
+		["n|<leader>gtp"] = map_cr("GoTest"):with_silent(),
+	}
+	bind.nvim_load_mapping(go_map)
 end
 
 function config.lang_tex()
 	vim.cmd([[
     let g:tex_lavor='latex'
+    let g:vimtex_complete_enabled = 0
     let g:vimtex_texcount_custom_arg=' -ch -total'
     au FileType tex map <buffer> <silent>  <leader>lw :VimtexCountWords!  <CR><CR>
     let g:vimtex_compiler_latexmk_engines = {

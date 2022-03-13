@@ -10,7 +10,7 @@ lang["fatih/vim-go"] = {
 	opt = true,
 	ft = "go",
 	run = ":GoInstallBinaries",
-	setup = conf.lang_go,
+	config = conf.lang_go,
 }
 
 lang["lervag/vimtex"] = {
