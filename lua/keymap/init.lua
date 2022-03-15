@@ -92,22 +92,6 @@ local plug_map = {
 	-- Plugin accelerate-jk
 	["n|j"] = map_cmd("v:lua.enhance_jk_move('j')"):with_silent():with_expr(),
 	["n|k"] = map_cmd("v:lua.enhance_jk_move('k')"):with_silent():with_expr(),
-	-- Plugin vim-eft
-	["n|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
-	["n|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
-	["n|t"] = map_cmd("v:lua.enhance_ft_move('t')"):with_expr(),
-	["n|T"] = map_cmd("v:lua.enhance_ft_move('T')"):with_expr(),
-	["n|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
-	["x|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
-	["x|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
-	["x|t"] = map_cmd("v:lua.enhance_ft_move('t')"):with_expr(),
-	["x|T"] = map_cmd("v:lua.enhance_ft_move('T')"):with_expr(),
-	["x|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
-	["o|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
-	["o|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
-	["o|t"] = map_cmd("v:lua.enhance_ft_move('t')"):with_expr(),
-	["o|T"] = map_cmd("v:lua.enhance_ft_move('T')"):with_expr(),
-	["o|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
 	-- Plugin Hop
 	["n|<leader>w"] = map_cu("HopWord"):with_noremap(),
 	["n|<leader>j"] = map_cu("HopLine"):with_noremap(),

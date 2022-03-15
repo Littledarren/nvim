@@ -58,8 +58,6 @@ tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 
 -- highlight todo list
 tools["folke/todo-comments.nvim"] = {
-	opt = true,
-	cmd = { "TodoQuickFix", "TodoLocList", "TodoTrouble", "TodoTelescope" },
 	config = function()
 		require("todo-comments").setup({})
 	end,

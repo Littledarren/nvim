@@ -1,16 +1,17 @@
 # nvim
+
 nvim config.
 
 Good Configuration Framework copied from https://github.com/ayamir/nvimdots
 
-the core idea is seperate the main config from the plugin config, which can be found in many IDE-like neovim configs like LunarVim or NeoChad.
+the core idea is separate the main config from the plugin config, which can be found in many IDE-like neovim configs like LunarVim or NeoChad.
 
 ```
 ./
 ├── init.lua
 ├── lua
 │   ├── core
-│   │   ├── autocmd.lua     
+│   │   ├── autocmd.lua
 │   │   ├── global.lua
 │   │   ├── init.lua
 │   │   ├── mapping.lua

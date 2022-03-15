@@ -80,7 +80,6 @@ editor["phaazon/hop.nvim"] = {
 		require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 	end,
 }
-editor["hrsh7th/vim-eft"] = {}
 -- 平滑滚动
 editor["karb94/neoscroll.nvim"] = {
 	opt = true,
@@ -172,8 +171,6 @@ editor["lewis6991/gitsigns.nvim"] = {
 
 -- better diagnostics
 editor["folke/trouble.nvim"] = {
-	opt = true,
-	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
 	config = conf.trouble,
 }
 
@@ -185,6 +182,10 @@ editor["michaelb/sniprun"] = {
 }
 
 -- beautiful vim.notify
-editor["rcarriga/nvim-notify"] = {}
+editor["rcarriga/nvim-notify"] = {
+	config = function()
+		vim.notify = require("notify")
+	end,
+}
 
 return editor
