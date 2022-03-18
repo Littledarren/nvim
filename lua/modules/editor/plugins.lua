@@ -188,4 +188,6 @@ editor["rcarriga/nvim-notify"] = {
 	end,
 }
 
+editor["rlue/vim-barbaric"] = {}
+
 return editor

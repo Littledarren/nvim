@@ -1,0 +1,7 @@
+{
+  "ref": {
+    "prefix": "ref",
+    "body": "~\\ref{$1}",
+    "description": "reference some thing"
+  }
+}

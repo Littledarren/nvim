@@ -163,23 +163,16 @@ end
 
 function config.autopairs()
 	require("nvim-autopairs").setup({
-		fast_wrap = {
-			map = "<M-e>",
-			chars = { "{", "[", "(", '"', "'" },
-			pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-			offset = 0, -- Offset from pattern match
-			end_key = "$",
-			keys = "qwertyuiopzxcvbnmasdfghjkl",
-			check_comma = true,
-			highlight = "Search",
-			highlight_grey = "Comment",
-		},
+		disable_filetype = { "TelescopePrompt" },
+		fast_wrap = {},
+		disable_in_macro = true, -- disable when recording or executing a macro
+		disable_in_visualblock = true, -- disable when insert after visual block mode
+		check_ts = true,
 	})
 	-- If you want insert `(` after select function or method item
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	local cmp = require("cmp")
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
-	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 end
 
 function config.nvim_lsputils()
@@ -231,7 +224,7 @@ function config.nullls()
 				vim.cmd([[
                 augroup Null_Format
                     autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 5000)
                 augroup END
                 ]])
 			end
