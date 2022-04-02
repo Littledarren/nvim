@@ -63,13 +63,6 @@ tools["folke/todo-comments.nvim"] = {
 	end,
 }
 
-tools["ellisonleao/glow.nvim"] = {
-	opt = true,
-	ft = "markdown",
-	config = function()
-		vim.api.nvim_set_keymap("n", "<leader>mp", ":Glow<CR>", {})
-	end,
-}
 
 tools["wakatime/vim-wakatime"] = {
 	cond = function()

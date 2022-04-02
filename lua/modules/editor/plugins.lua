@@ -188,6 +188,6 @@ editor["rcarriga/nvim-notify"] = {
 	end,
 }
 
+-- 输入法切换
 editor["rlue/vim-barbaric"] = {}
-
 return editor

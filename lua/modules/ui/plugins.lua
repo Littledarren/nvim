@@ -6,16 +6,14 @@ ui["kyazdani42/nvim-web-devicons"] = { opt = false }
 -- colorscheme
 -- ui["sainnhe/edge"] = { opt = false, config = conf.edge }
 ui["rebelot/kanagawa.nvim"] = { opt = false, config = conf.kanagawa }
--- ui["lifepillar/vim-gruvbox8"] = { opt = false }
+ui["folke/tokyonight.nvim"] = {}
 -- colorscheme maybe?
 ui["catppuccin/nvim"] = {
 	opt = false,
 	as = "catppuccin",
 	config = conf.catppuccin,
 }
-ui["navarasu/onedark.nvim"] = {
-	opt = false,
-}
+ui["navarasu/onedark.nvim"] = { }
 -- 然也有一些功能。。。
 ui["goolord/alpha-nvim"] = { opt = true, event = "BufWinEnter", config = conf.alpha }
 

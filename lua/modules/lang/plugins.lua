@@ -28,4 +28,26 @@ lang["simrat39/rust-tools.nvim"] = {
 
 lang["chrisbra/csv.vim"] = { opt = true, ft = "csv" }
 
+-- markdown
+lang["ekickx/clipboard-image.nvim"] = {
+    config = function ()
+        require('clipboard-image').setup{
+            default = {
+                img_dir = {"%:p:h", "assets"},
+                img_name = function() return "image-" .. os.date('%Y-%m-%d-%H-%M-%S') end,
+                img_dir_txt = "assets"
+            }
+        }
+    end
+}
+
+lang["iamcco/markdown-preview.nvim"] = {
+	opt = true,
+	ft = "markdown",
+    fun = "cd app && npm install",
+	config = function()
+		vim.api.nvim_set_keymap("n", "<leader>mp", "<Plug>MarkdownPreview", {})
+	end,
+}
+
 return lang

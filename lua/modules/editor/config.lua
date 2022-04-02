@@ -305,7 +305,7 @@ function config.lualine()
 	require("lualine").setup({
 		options = {
 			icons_enabled = true,
-			theme = "onedark",
+			theme = "tokyonight",
 			disabled_filetypes = {},
 			component_separators = "|",
 			section_separators = { left = "", right = "" },
@@ -349,12 +349,12 @@ function config.nvim_tree()
 	require("nvim-tree").setup({
 		disable_netrw = true,
 		hijack_netrw = true,
-		open_on_setup = false,
 		ignore_ft_on_setup = {},
-		auto_close = true,
-		open_on_tab = false,
+		-- auto_close = true, -- 移除了。。
+		-- open_on_setup = false,
+		-- open_on_tab = false,
 		hijack_cursor = true,
-		update_cwd = false,
+		-- update_cwd = false,
 		update_to_buf_dir = { enable = true, auto_open = true },
 		diagnostics = {
 			enable = false,
