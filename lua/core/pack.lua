@@ -42,6 +42,9 @@ function Packer:load_packer()
 				return require("packer.util").float({ border = "single" })
 			end,
 		},
+		git = {
+			default_url_format = "https://github.com/%s",
+		},
 	})
 	packer.reset()
 	local use = packer.use
