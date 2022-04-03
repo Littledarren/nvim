@@ -78,11 +78,11 @@ function config.cmp()
 
 				vim_item.menu = ({
 					-- cmp_tabnine = "[TN]",
-					buffer = "[BUF]",
-					orgmode = "[ORG]",
 					nvim_lsp = "[LSP]",
-					nvim_lua = "[LUA]",
+					buffer = "[BUF]",
+					-- orgmode = "[ORG]",
 					path = "[PATH]",
+					nvim_lua = "[LUA]",
 					tmux = "[TMUX]",
 					luasnip = "[SNIP]",
 					spell = "[SPELL]",
@@ -140,7 +140,14 @@ function config.cmp()
 		sources = {
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
-			{ name = "buffer" },
+			{
+				name = "buffer",
+				option = {
+					get_bufnrs = function()
+						return vim.api.nvim_list_bufs()
+					end,
+				},
+			},
 			{ name = "path" },
 			{ name = "latex_symbols" },
 			{ name = "emoji" },
@@ -153,11 +160,31 @@ function config.cmp()
 end
 
 function config.luasnip()
-	require("luasnip").config.set_config({
+	local luasnip = require("luasnip")
+
+	local types = require("luasnip.util.types")
+	luasnip.config.setup({
+		ext_opts = {
+			[types.choiceNode] = {
+				active = {
+					virt_text = { { "●", "GruvboxOrange" } },
+				},
+			},
+			[types.insertNode] = {
+				active = {
+					virt_text = { { "●", "GruvboxBlue" } },
+				},
+			},
+		},
 		history = true,
 		updateevents = "TextChanged,TextChangedI",
 	})
-	require("luasnip/loaders/from_vscode").lazy_load()
+	vim.cmd([[ 
+        command! LuaSnipEdit lua require('luasnip.loaders.from_lua').edit_snippet_files()
+    ]])
+
+	require("luasnip.loaders.from_lua").lazy_load()
+	require("luasnip.loaders.from_vscode").lazy_load()
 	require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-snippets" } })
 end
 
