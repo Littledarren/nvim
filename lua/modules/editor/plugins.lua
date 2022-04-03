@@ -128,7 +128,7 @@ editor["jdhao/better-escape.vim"] = { opt = true, event = "InsertEnter" }
 -- 	},
 -- }
 -- git fugitive
-editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }
+editor["tpope/vim-fugitive"] = {}
 editor["famiu/bufdelete.nvim"] = {
 	opt = true,
 	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },

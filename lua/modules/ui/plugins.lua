@@ -2,9 +2,8 @@ local ui = {}
 local conf = require("modules.ui.config")
 
 -- 获取icon
-ui["kyazdani42/nvim-web-devicons"] = { opt = false }
+ui["kyazdani42/nvim-web-devicons"] = {}
 -- colorscheme
--- ui["sainnhe/edge"] = { opt = false, config = conf.edge }
 ui["rebelot/kanagawa.nvim"] = { opt = false, config = conf.kanagawa }
 ui["folke/tokyonight.nvim"] = {}
 -- colorscheme maybe?
@@ -14,7 +13,8 @@ ui["catppuccin/nvim"] = {
 	config = conf.catppuccin,
 }
 ui["navarasu/onedark.nvim"] = { }
--- 然也有一些功能。。。
+
+-- 启动页
 ui["goolord/alpha-nvim"] = { opt = true, event = "BufWinEnter", config = conf.alpha }
 
 -- 类似indentline

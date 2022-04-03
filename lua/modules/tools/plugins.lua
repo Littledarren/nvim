@@ -2,8 +2,8 @@ local tools = {}
 local conf = require("modules.tools.config")
 
 -- 应该类似库函数了，好像很多插件依赖这个
-tools["RishabhRD/popfix"] = { opt = false }
-tools["nvim-lua/plenary.nvim"] = { opt = false }
+tools["RishabhRD/popfix"] = {}
+tools["nvim-lua/plenary.nvim"] = {}
 
 -- fuzzy search
 tools["nvim-telescope/telescope.nvim"] = {
@@ -12,7 +12,7 @@ tools["nvim-telescope/telescope.nvim"] = {
 	cmd = "Telescope",
 	config = conf.telescope,
 	requires = {
-		{ "nvim-lua/plenary.nvim", opt = false },
+		{ "nvim-lua/plenary.nvim"},
 		{ "nvim-lua/popup.nvim", opt = true },
 	},
 }
@@ -59,10 +59,12 @@ tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 -- highlight todo list
 tools["folke/todo-comments.nvim"] = {
 	config = function()
-		require("todo-comments").setup({})
+        local ok, comm = pcall(require, "todo-comments")
+        if ok then
+            comm.setup{}
+        end
 	end,
 }
-
 
 tools["wakatime/vim-wakatime"] = {
 	cond = function()

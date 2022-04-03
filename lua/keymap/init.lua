@@ -22,9 +22,8 @@ local plug_map = {
 	["n|<leader>b9"] = map_cr("BufferLineGoToBuffer 9"):with_noremap():with_silent(),
 	-- Packer
 	["n|<leader>ps"] = map_cr("PackerSync"):with_silent():with_noremap():with_nowait(),
-	["n|<leader>pu"] = map_cr("PackerUpdate"):with_silent():with_noremap():with_nowait(),
-	["n|<leader>pi"] = map_cr("PackerInstall"):with_silent():with_noremap():with_nowait(),
-	["n|<leader>pc"] = map_cr("PackerClean"):with_silent():with_noremap():with_nowait(),
+	["n|<leader>pp"] = map_cr("PackerStatus"):with_silent():with_noremap():with_nowait(),
+	["n|<leader>pc"] = map_cr("PackerCompile"):with_silent():with_noremap():with_nowait(),
 	-- Lsp map work when insertenter and lsp start
 	["n|<leader>lq"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>li"] = map_cr("LspInstallInfo"):with_noremap():with_silent():with_nowait(),

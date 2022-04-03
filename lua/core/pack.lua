@@ -1,5 +1,5 @@
 local fn, uv, api = vim.fn, vim.loop, vim.api
-local pack_dir = require("core.global").pack_dir -- 有末尾的 斜杠
+local pack_dir = require("core.global").pack_dir -- 有末尾的斜杠
 local modules_dir = require("core.global").modules_dir -- 没有斜杠
 local compile_to_lua = pack_dir .. "lua/packer_compiled.lua"
 local packer = nil
@@ -27,7 +27,7 @@ function Packer:load_plugins()
 	end
 end
 
-function Packer:load_packer()
+function Packer:init()
 	if not packer then
 		vim.cmd([[packadd packer.nvim]])
 		packer = require("packer")
@@ -55,16 +55,16 @@ function Packer:load_packer()
 	end
 end
 
-function Packer:init_ensure_plugins()
+function Packer:load_packer()
 	local packer_dir = pack_dir .. "pack/packer/opt/packer.nvim"
 	local state = uv.fs_stat(packer_dir)
 	if not state then
-		local cmd = "!git clone https://github.com/wbthomason/packer.nvim " .. packer_dir
+		local cmd = "!git clone --depth 1 https://github.com/wbthomason/packer.nvim " .. packer_dir
 		api.nvim_command(cmd)
 		uv.fs_mkdir(pack_dir .. "lua", 511, function()
-			assert("make compile path dir faield")
+			assert("make compile path dir failed")
 		end)
-		self:load_packer()
+		self:init()
 		packer.install()
 	end
 end
@@ -72,14 +72,15 @@ end
 local plugins = setmetatable({}, {
 	__index = function(_, key)
 		if not packer then
-			Packer:load_packer()
+			Packer:init()
 		end
 		return packer[key]
 	end,
 })
 
 function plugins.ensure_plugins()
-	Packer:init_ensure_plugins()
+    -- 确保packer的安装，第一次安装时会安装所有的插件。
+	Packer:load_packer()
 end
 
 function plugins.auto_compile()

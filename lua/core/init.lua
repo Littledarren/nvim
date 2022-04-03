@@ -34,7 +34,7 @@ end
 
 -- super neovide
 local neovide_config = function()
-	vim.cmd([[set guifont=JetBrainsMono\ Nerd\ Font:h12]])
+	vim.cmd([[set guifont=NotoSansCJK]])
 	vim.g.neovide_refresh_rate = 60
 	vim.g.neovide_cursor_vfx_mode = "railgun"
 	vim.g.neovide_no_idle = true
@@ -85,7 +85,7 @@ local load_core = function()
 	disable_distribution_plugins()
 	leader_map()
 	clipboard_settings()
-	-- neovide_config()
+	neovide_config()
 	require("core.options")
 
 	local pack = require("core.pack")
