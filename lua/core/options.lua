@@ -9,6 +9,7 @@ local function load_options()
 		magic = true,
 		-- virtualedit = "block",
 		-- encoding = "utf-8",
+		fileformats = "unix",
 		fileencoding = "utf-8",
 		sessionoptions = "blank,buffers,folds,help,winpos,terminal,curdir,tabpages,winsize",
 		clipboard = "unnamedplus",
