@@ -116,20 +116,20 @@ function config.cmp()
 					fallback()
 				end
 			end, { "i", "s" }),
-			["<C-h>"] = function(fallback)
+			["<C-h>"] = cmp.mapping(function(fallback)
 				if require("luasnip").jumpable(-1) then
 					vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
 				else
 					fallback()
 				end
-			end,
-			["<C-l>"] = function(fallback)
+			end, { "i", "s" }),
+			["<C-l>"] = cmp.mapping(function(fallback)
 				if require("luasnip").expand_or_jumpable() then
 					vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
 				else
 					fallback()
 				end
-			end,
+			end, { "i", "s" }),
 		},
 		snippet = {
 			expand = function(args)
@@ -160,25 +160,78 @@ function config.cmp()
 end
 
 function config.luasnip()
-	local luasnip = require("luasnip")
+	local ls = require("luasnip")
 
 	local types = require("luasnip.util.types")
-	luasnip.config.setup({
+	ls.config.setup({
 		ext_opts = {
 			[types.choiceNode] = {
 				active = {
-					virt_text = { { "●", "GruvboxOrange" } },
-				},
-			},
-			[types.insertNode] = {
-				active = {
-					virt_text = { { "●", "GruvboxBlue" } },
+					virt_text = { { "●", "DiagnosticWarn" } },
+					priority = 0,
 				},
 			},
 		},
 		history = true,
-		updateevents = "TextChanged,TextChangedI",
+		-- updateevents = "TextChanged,TextChangedI",
+		updateevents = "InsertLeave",
+		region_check_events = "CursorHold,InsertLeave",
+		delete_check_events = "TextChanged,InsertEnter",
+		snip_env = {
+			s = ls.s,
+			sn = ls.sn,
+			t = ls.t,
+			i = ls.i,
+			f = function(func, argnodes, ...)
+				return ls.f(function(args, imm_parent, user_args)
+					return func(args, imm_parent.snippet, user_args)
+				end, argnodes, ...)
+			end,
+			-- override to enable restore_cursor.
+			c = function(pos, nodes, opts)
+				opts = opts or {}
+				opts.restore_cursor = true
+				return ls.c(pos, nodes, opts)
+			end,
+			d = function(pos, func, argnodes, ...)
+				return ls.d(pos, function(args, imm_parent, old_state, ...)
+					return func(args, imm_parent.snippet, old_state, ...)
+				end, argnodes, ...)
+			end,
+			isn = require("luasnip.nodes.snippet").ISN,
+			l = require("luasnip.extras").lambda,
+			dl = require("luasnip.extras").dynamic_lambda,
+			rep = require("luasnip.extras").rep,
+			r = ls.restore_node,
+			p = require("luasnip.extras").partial,
+			types = require("luasnip.util.types"),
+			events = require("luasnip.util.events"),
+			util = require("luasnip.util.util"),
+			fmt = require("luasnip.extras.fmt").fmt,
+			fmta = require("luasnip.extras.fmt").fmta,
+			ls = ls,
+			ins_generate = function(nodes)
+				return setmetatable(nodes or {}, {
+					__index = function(table, key)
+						local indx = tonumber(key)
+						if indx then
+							local val = ls.i(indx)
+							rawset(table, key, val)
+							return val
+						end
+					end,
+				})
+			end,
+			parse = ls.parser.parse_snippet,
+			n = require("luasnip.extras").nonempty,
+			m = require("luasnip.extras").match,
+			ai = require("luasnip.nodes.absolute_indexer"),
+		},
 	})
+	vim.api.nvim_set_keymap("i", "<C-E>", "<Plug>luasnip-next-choice", {})
+	vim.api.nvim_set_keymap("s", "<C-E>", "<Plug>luasnip-next-choice", {})
+	vim.api.nvim_set_keymap("i", "<C-t>", "<Plug>luasnip-prev-choice", {})
+	vim.api.nvim_set_keymap("s", "<C-t>", "<Plug>luasnip-prev-choice", {})
 	vim.cmd([[ 
         command! LuaSnipEdit lua require('luasnip.loaders.from_lua').edit_snippet_files()
     ]])
