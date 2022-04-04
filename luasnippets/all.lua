@@ -91,15 +91,48 @@ local todo_comment_snippets = {}
 for _, v in ipairs(todo_snippet_specs) do
 	table.insert(todo_comment_snippets, todo_snippet(v[1], v[2]))
 end
-local function bash(_, _, command)
-	local file = io.popen(command, "r")
-	local res = {}
-	for line in file:lines() do
-		table.insert(res, line)
-	end
-	return res
+
+local function comment_line(args)
+	-- local s = get_cstring()[1]
+	local s = require("luasnip.util.util").buffer_comment_chars()[1]
+	print(#s)
+	return string.rep(s, 3 + #args[1][1] / 2)
 end
 
 return vim.list_extend(todo_comment_snippets, {
 	s("date", p(os.date, "%Y-%m-%d")),
+	s("box", {
+		d(2, function(args)
+			local upper_line = comment_line(args)
+			return sn(nil, {
+				t(upper_line),
+				t({ "", get_cstring()[1] .. string.rep(" ", (#upper_line - #args[1][1]) / 2 - #get_cstring()[1]) }),
+			})
+		end, { 1 }),
+		i(1, "content"),
+		d(3, function(args)
+			return sn(nil, {
+				t({ "", comment_line(args) }),
+			})
+		end, { 1 }),
+		i(0),
+	}),
+	-- s("novel", {
+	-- 	t("It was a dark and stormy night on "),
+	-- 	d(1, date_input, {}, { user_args = { "%A, %B %d of %Y" } }),
+	-- 	t(" and the clocks were striking thirteen."),
+	-- }),
+	-- s("trig", {
+	-- 	t("text: "),
+	-- 	i(1),
+	-- 	t({ "", "copy: " }),
+	-- 	d(2, function(args)
+	-- 		-- the returned snippetNode doesn't need a position; it's inserted
+	-- 		-- "inside" the dynamicNode.
+	-- 		return sn(nil, {
+	-- 			-- jump-indices are local to each snippetNode, so restart at 1.
+	-- 			i(1, args[1]),
+	-- 		})
+	-- 	end, { 1 }),
+	-- }),
 })
