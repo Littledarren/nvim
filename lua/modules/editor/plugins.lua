@@ -91,7 +91,7 @@ editor["karb94/neoscroll.nvim"] = {
 -- 	opt = true,
 -- 	cmd = { "Term", "VTerm" },
 -- }
-editor["akinsho/nvim-toggleterm.lua"] = {
+editor["akinsho/toggleterm.nvim"] = {
 	opt = true,
 	event = "BufRead",
 	config = conf.toggleterm,
@@ -152,7 +152,7 @@ editor["hoob3rt/lualine.nvim"] = {
 	after = "lualine-lsp-progress",
 }
 -- bufferline 类似airline的那个。
-editor["akinsho/nvim-bufferline.lua"] = {
+editor["akinsho/bufferline.nvim"] = {
 	opt = true,
 	event = "BufRead",
 	config = conf.nvim_bufferline,
