@@ -109,7 +109,6 @@ end
 
 function config.lang_tex()
 	vim.cmd([[
-    let g:tex_lavor='latex'
     let g:vimtex_complete_enabled = 0
     let g:vimtex_fold_enabled = 1
     let g:vimtex_texcount_custom_arg=' -ch -total'

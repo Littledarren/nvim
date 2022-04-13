@@ -12,7 +12,7 @@ tools["nvim-telescope/telescope.nvim"] = {
 	cmd = "Telescope",
 	config = conf.telescope,
 	requires = {
-		{ "nvim-lua/plenary.nvim"},
+		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-lua/popup.nvim", opt = true },
 	},
 }
@@ -59,10 +59,10 @@ tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 -- highlight todo list
 tools["folke/todo-comments.nvim"] = {
 	config = function()
-        local ok, comm = pcall(require, "todo-comments")
-        if ok then
-            comm.setup{}
-        end
+		local ok, comm = pcall(require, "todo-comments")
+		if ok then
+			comm.setup({})
+		end
 	end,
 }
 
@@ -81,11 +81,15 @@ tools["wakatime/vim-wakatime"] = {
 -- StartupTime profile
 tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 
-tools["nathom/filetype.nvim"] = {
-	config = function()
-		require("filetype").setup({})
-	end,
-}
+-- tools["nathom/filetype.nvim"] = {
+-- 	config = function()
+-- 		require("filetype").setup({
+-- 			extensions = {
+-- 				tex = "tex",
+-- 			},
+-- 		})
+-- 	end,
+-- }
 tools["lewis6991/impatient.nvim"] = {}
 
 return tools
