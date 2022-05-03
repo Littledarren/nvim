@@ -26,4 +26,14 @@ return {
 		t("}"),
 		i(0),
 	}),
+	s("aligned", {
+		t({ [[\begin{aligned}]] }),
+		i(0),
+		t({ [[\end{aligned}]] }),
+	}),
+	s("theo:ref", {
+		t({ [[Theorem~\ref{]] }),
+		i(0, "theo:"),
+		t({ [[}]] }),
+	}),
 }
