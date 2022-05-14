@@ -38,7 +38,7 @@ local function custom_attach(client)
 		handler_opts = { "double" },
 	})
 
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.document_highlight then
 		vim.cmd([[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
@@ -82,7 +82,7 @@ local enhance_server_opts = {
 			},
 		}
 		opts.on_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.document_formatting = false
 			custom_attach(client)
 		end
 	end,
@@ -118,7 +118,7 @@ local enhance_server_opts = {
 		}
 		-- Disable `clangd`'s format
 		opts.on_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.document_formatting = false
 			custom_attach(client)
 		end
 	end,
@@ -178,14 +178,14 @@ local enhance_server_opts = {
 	["tsserver"] = function(opts)
 		-- Disable `tsserver`'s format
 		opts.on_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.document_formatting = false
 			custom_attach(client)
 		end
 	end,
 	["dockerls"] = function(opts)
 		-- Disable `dockerls`'s format
 		opts.on_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.document_formatting = false
 			custom_attach(client)
 		end
 	end,
@@ -204,14 +204,14 @@ local enhance_server_opts = {
 		}
 		-- Disable `gopls`'s format
 		opts.on_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.document_formatting = false
 			custom_attach(client)
 		end
 	end,
 	["texlab"] = function(opts)
 		-- Disable `texlab`'s format
 		opts.on_attach = function(client)
-			client.resolved_capabilities.document_formatting = false
+			client.server_capabilities.document_formatting = false
 			custom_attach(client)
 		end
 	end,
