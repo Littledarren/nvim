@@ -44,7 +44,7 @@ lang["ekickx/clipboard-image.nvim"] = {
 lang["iamcco/markdown-preview.nvim"] = {
 	opt = true,
 	ft = "markdown",
-    fun = "cd app && npm install",
+    run = "cd app && npm install",
 	config = function()
 		vim.api.nvim_set_keymap("n", "<leader>mp", "<Plug>MarkdownPreview", {})
 	end,
