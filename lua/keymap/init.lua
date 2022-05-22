@@ -29,7 +29,7 @@ local plug_map = {
 	["n|<leader>li"] = map_cr("LspInstallInfo"):with_noremap():with_silent():with_nowait(),
 	["n|<leader>lr"] = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
 	-- lsp saga
-	["n|<leader>="] = map_cr("lua vim.lsp.buf.formatting()"):with_noremap():with_silent(),
+	["n|<leader>="] = map_cr("lua vim.lsp.buf.format({async=true})"):with_noremap():with_silent(),
 	["v|<leader>="] = map_cr("lua vim.lsp.buf.range_formatting()"):with_noremap():with_silent(),
 	["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap():with_silent(),
 	["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_noremap():with_silent(),

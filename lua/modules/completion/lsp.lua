@@ -53,7 +53,6 @@ local function custom_attach(client, bufnr)
 	}
 	if diabled_formatting_server[client.name] then
 		client.server_capabilities.documentFormattingProvider = false
-		client.resolved_capabilities.document_formatting = false
 	end
 
 	if client.server_capabilities.documentHighlightProvider then

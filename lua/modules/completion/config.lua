@@ -306,7 +306,7 @@ function config.nullls()
 				vim.cmd([[
                 augroup Null_Format
                     autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 5000)
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async=true})
                 augroup END
                 ]])
 			end
