@@ -16,18 +16,18 @@ saga.init_lsp_saga({
 	infor_sign = "",
 })
 
-lsp_installer.settings({
-	ui = {
-		icons = {
-			server_installed = "✓",
-			server_pending = "➜",
-			server_uninstalled = "✗",
-		},
-	},
-})
+-- lsp_installer.settings({
+-- 	ui = {
+-- 		icons = {
+-- 			server_installed = "✓",
+-- 			server_pending = "➜",
+-- 			server_uninstalled = "✗",
+-- 		},
+-- 	},
+-- })
 
 -- Override default format setting
-local function custom_attach(client)
+local function custom_attach(client, bufnr)
 	require("lsp_signature").on_attach({
 		bind = true,
 		use_lspsaga = false,
@@ -38,7 +38,25 @@ local function custom_attach(client)
 		handler_opts = { "double" },
 	})
 
-	if client.server_capabilities.document_highlight then
+	local ok, m = pcall(require, "aerial")
+	if ok then
+		m.on_attach(client, bufnr)
+	end
+
+	local diabled_formatting_server = {
+		sumneko_lua = true,
+        clangd = true,
+        tsserver = true,
+        dockerls = true,
+        gopls = true,
+
+	}
+	if diabled_formatting_server[client.name] then
+		client.server_capabilities.documentFormattingProvider = false
+        client.resolved_capabilities.document_formatting = false
+	end
+
+	if client.server_capabilities.documentHighlightProvider then
 		vim.cmd([[
             augroup lsp_document_highlight
                 autocmd! * <buffer>
@@ -81,10 +99,6 @@ local enhance_server_opts = {
 				telemetry = { enable = false },
 			},
 		}
-		opts.on_attach = function(client)
-			client.server_capabilities.document_formatting = false
-			custom_attach(client)
-		end
 	end,
 	["clangd"] = function(opts)
 		opts.args = {
@@ -116,11 +130,6 @@ local enhance_server_opts = {
 				description = "Open source/header in a new split",
 			},
 		}
-		-- Disable `clangd`'s format
-		opts.on_attach = function(client)
-			client.server_capabilities.document_formatting = false
-			custom_attach(client)
-		end
 	end,
 	["jsonls"] = function(opts)
 		opts.settings = {
@@ -175,20 +184,6 @@ local enhance_server_opts = {
 			},
 		}
 	end,
-	["tsserver"] = function(opts)
-		-- Disable `tsserver`'s format
-		opts.on_attach = function(client)
-			client.server_capabilities.document_formatting = false
-			custom_attach(client)
-		end
-	end,
-	["dockerls"] = function(opts)
-		-- Disable `dockerls`'s format
-		opts.on_attach = function(client)
-			client.server_capabilities.document_formatting = false
-			custom_attach(client)
-		end
-	end,
 	["gopls"] = function(opts)
 		opts.settings = {
 			gopls = {
@@ -202,17 +197,12 @@ local enhance_server_opts = {
 				staticcheck = true,
 			},
 		}
-		-- Disable `gopls`'s format
-		opts.on_attach = function(client)
-			client.server_capabilities.document_formatting = false
-			custom_attach(client)
-		end
 	end,
 	["texlab"] = function(opts)
-		-- Disable `texlab`'s format
-		opts.on_attach = function(client)
-			client.server_capabilities.document_formatting = false
-			custom_attach(client)
+		-- Disable `texlab`'s highlight
+		opts.on_attach = function(client, ...)
+			client.server_capabilities.documentHighlightProvider = false
+			custom_attach(client, ...)
 		end
 	end,
 	["html"] = function(opts)

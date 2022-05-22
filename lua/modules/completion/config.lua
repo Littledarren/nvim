@@ -300,11 +300,11 @@ function config.nullls()
 	ls.setup({
 		sources = sources,
 		on_attach = function(client)
-			if client.server_capabilities.document_formatting then
+			if client.server_capabilities.documentFormattingProvider then
 				vim.cmd([[
                 augroup Null_Format
                     autocmd! * <buffer>
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.format(nil, 5000)
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
                 augroup END
                 ]])
 			end

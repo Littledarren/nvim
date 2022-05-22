@@ -2,10 +2,9 @@ local config = {}
 local dap_dir = vim.fn.stdpath("data") .. "/dapinstall/"
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 
-function config.symbols_outline()
-	require("symbols-outline").setup({
-		auto_preview = false,
-	})
+
+function config.aerial()
+	require("aerial").setup({})
 end
 
 function config.nvim_treesitter()
@@ -15,6 +14,24 @@ function config.nvim_treesitter()
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = "all",
 		highlight = { enable = true, disable = { "vim", "latex" } },
+        playground = {
+            enable = true,
+            disable = {},
+            updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+            persist_queries = false, -- Whether the query persists across vim sessions
+            keybindings = {
+                toggle_query_editor = 'o',
+                toggle_hl_groups = 'i',
+                toggle_injected_languages = 't',
+                toggle_anonymous_nodes = 'a',
+                toggle_language_display = 'I',
+                focus_language = 'f',
+                unfocus_language = 'F',
+                update = 'R',
+                goto_node = '<cr>',
+                show_help = '?',
+            },
+        },
 		textobjects = {
 			select = {
 				enable = true,
@@ -60,28 +77,6 @@ end
 function config.matchup()
 	vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
 end
-
--- function config.nvim_gps()
--- 	require("nvim-gps").setup({
--- 		icons = {
--- 			["class-name"] = " ", -- Classes and class-like objects
--- 			["function-name"] = " ", -- Functions
--- 			["method-name"] = " ", -- Methods (functions inside class-like objects)
--- 		},
--- 		languages = {
--- 			-- You can disable any language individually here
--- 			["c"] = true,
--- 			["cpp"] = true,
--- 			["go"] = true,
--- 			["java"] = true,
--- 			["javascript"] = true,
--- 			["lua"] = true,
--- 			["python"] = true,
--- 			["rust"] = true,
--- 		},
--- 		separator = " > ",
--- 	})
--- end
 
 function config.autotag()
 	require("nvim-ts-autotag").setup({

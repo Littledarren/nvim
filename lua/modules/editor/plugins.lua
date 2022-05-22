@@ -13,10 +13,10 @@ editor["terrortylor/nvim-comment"] = {
 	end,
 }
 -- tagbar based on lsp
-editor["simrat39/symbols-outline.nvim"] = {
+editor["stevearc/aerial.nvim"] = {
 	opt = true,
-	cmd = { "SymbolsOutline", "SymbolsOutlineOpen" },
-	config = conf.symbols_outline,
+	cmd = { "AerialToggle"},
+	config = conf.aerial,
 }
 editor["nvim-treesitter/nvim-treesitter"] = {
 	opt = true,
@@ -24,6 +24,11 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 	event = "BufRead",
 	config = conf.nvim_treesitter,
 }
+
+editor["nvim-treesitter/playground"] = {
+    after = "nvim-treesitter"
+}
+
 editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
 	opt = true,
 	after = "nvim-treesitter",
