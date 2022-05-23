@@ -79,7 +79,7 @@ local plugins = setmetatable({}, {
 })
 
 function plugins.ensure_plugins()
-    -- 确保packer的安装，第一次安装时会安装所有的插件。
+	-- 确保packer的安装，第一次安装时会安装所有的插件。
 	Packer:load_packer()
 end
 

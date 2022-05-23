@@ -59,10 +59,7 @@ tools["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 -- highlight todo list
 tools["folke/todo-comments.nvim"] = {
 	config = function()
-		local ok, comm = pcall(require, "todo-comments")
-		if ok then
-			comm.setup({})
-		end
+        require("todo-comments").setup{}
 	end,
 }
 

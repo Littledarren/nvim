@@ -2,29 +2,24 @@ local completion = {}
 local conf = require("modules.completion.config")
 
 completion["neovim/nvim-lspconfig"] = {
-	opt = true,
-	event = "BufReadPre",
 	config = conf.nvim_lsp,
 }
 completion["williamboman/nvim-lsp-installer"] = {
-	opt = true,
 	after = "nvim-lspconfig",
 }
 completion["RishabhRD/nvim-lsputils"] = {
-	opt = true,
 	after = "nvim-lspconfig",
 	config = conf.nvim_lsputils,
 }
 -- lsp ui
-completion["tami5/lspsaga.nvim"] = { opt = true, after = "nvim-lspconfig" }
+completion["tami5/lspsaga.nvim"] = {  after = "nvim-lspconfig" }
 -- show a 💡
 completion["kosayoda/nvim-lightbulb"] = {
-	opt = true,
 	after = "nvim-lspconfig",
 	config = conf.lightbulb,
 }
 -- 展示函数签名
-completion["ray-x/lsp_signature.nvim"] = { opt = true, after = "nvim-lspconfig" }
+completion["ray-x/lsp_signature.nvim"] = {  after = "nvim-lspconfig" }
 -- 补全
 completion["hrsh7th/nvim-cmp"] = {
 	config = conf.cmp,
@@ -43,7 +38,6 @@ completion["hrsh7th/nvim-cmp"] = {
 	},
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
-	opt = true,
 	after = "nvim-lspconfig",
 	config = conf.nullls,
 }

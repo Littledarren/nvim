@@ -91,17 +91,12 @@ editor["karb94/neoscroll.nvim"] = {
 	event = "WinScrolled",
 	config = conf.neoscroll,
 }
--- 终端优化，感觉没啥用
--- editor["vimlab/split-term.vim"] = {
--- 	opt = true,
--- 	cmd = { "Term", "VTerm" },
--- }
+-- 终端优化
 editor["akinsho/toggleterm.nvim"] = {
 	opt = true,
 	event = "BufRead",
 	config = conf.toggleterm,
 }
--- editor["numtostr/FTerm.nvim"] = { opt = false }
 
 -- show color for color code like #ff00ff
 editor["norcalli/nvim-colorizer.lua"] = {
@@ -109,37 +104,13 @@ editor["norcalli/nvim-colorizer.lua"] = {
 	event = "BufRead",
 	config = conf.nvim_colorizer,
 }
--- auto_session 好像没用
-editor["rmagatti/auto-session"] = {
-	opt = true,
-	cmd = { "SaveSession", "RestoreSession", "DeleteSession" },
-	config = conf.auto_session,
-}
 -- map jk to <esc>?
 editor["jdhao/better-escape.vim"] = { opt = true, event = "InsertEnter" }
 
--- debug ui
--- editor["rcarriga/nvim-dap-ui"] = {
--- 	opt = false,
--- 	config = conf.dapui,
--- 	requires = {
--- 		{ "mfussenegger/nvim-dap", config = conf.dap },
--- 		{
--- 			"Pocco81/DAPInstall.nvim",
--- 			opt = true,
--- 			cmd = { "DIInstall", "DIUninstall", "DIList" },
--- 			config = conf.dapinstall,
--- 		},
--- 	},
--- }
 -- git fugitive
 editor["tpope/vim-fugitive"] = {}
-editor["famiu/bufdelete.nvim"] = {
-	opt = true,
-	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
-}
+
 editor["ojroques/vim-oscyank"] = {
-	opt = false,
 	config = function()
 		vim.cmd([[
             autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
@@ -147,12 +118,8 @@ editor["ojroques/vim-oscyank"] = {
 	end,
 }
 -- statusline
-editor["arkav/lualine-lsp-progress"] = {
-	opt = true,
-	after = "nvim-lspconfig",
-}
+editor["arkav/lualine-lsp-progress"] = { }
 editor["hoob3rt/lualine.nvim"] = {
-	opt = true,
 	config = conf.lualine,
 	after = "lualine-lsp-progress",
 }

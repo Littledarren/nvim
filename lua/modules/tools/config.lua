@@ -35,9 +35,9 @@ local new_maker = function(filepath, bufnr, opts)
 end
 
 function config.telescope()
-	vim.cmd([[packadd sqlite.lua]])
 	vim.cmd([[packadd telescope-fzf-native.nvim]])
 	vim.cmd([[packadd telescope-project.nvim]])
+	vim.cmd([[packadd sqlite.lua]])
 	vim.cmd([[packadd telescope-frecency.nvim]])
 	vim.cmd([[packadd telescope-emoji.nvim]])
 

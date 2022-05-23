@@ -45,15 +45,15 @@ local function custom_attach(client, bufnr)
 
 	local diabled_formatting_server = {
 		sumneko_lua = true,
-        clangd = true,
-        tsserver = true,
-        dockerls = true,
-        gopls = true,
-
+		clangd = true,
+		tsserver = true,
+		dockerls = true,
+		gopls = true,
+		texlab = true,
 	}
 	if diabled_formatting_server[client.name] then
 		client.server_capabilities.documentFormattingProvider = false
-        client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_formatting = false
 	end
 
 	if client.server_capabilities.documentHighlightProvider then

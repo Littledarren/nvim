@@ -42,9 +42,9 @@ local plug_map = {
 	["n|<C-d>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(1)"):with_noremap():with_silent(),
 	["n|gD"] = map_cr("Lspsaga preview_definition"):with_noremap():with_silent(),
 	["n|gd"] = map_cr("lua vim.lsp.buf.definition()"):with_noremap():with_silent(),
-	["n|gy"] = map_cr("lua vim.lsp.buf.type_definition()"):with_noremap():with_silent(),
+	["n|gt"] = map_cr("lua vim.lsp.buf.type_definition()"):with_noremap():with_silent(),
 	["n|gh"] = map_cr("Lspsaga lsp_finder"):with_noremap():with_silent(),
-	["n|g0"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
+	["n|gy"] = map_cr("lua vim.lsp.buf.document_symbol()"):with_noremap():with_silent(),
 	["n|gI"] = map_cr("lua vim.lsp.buf.implementation()"):with_noremap():with_silent(),
 	["n|gl"] = map_cr("Lspsaga show_line_diagnostics"):with_noremap():with_silent(),
 	["n|gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
@@ -103,10 +103,6 @@ local plug_map = {
 	-- Plugin lua dev
 	["n|<F2>"] = map_cmd("<Plug>(Luadev-RunLine)"):with_silent(),
 	["n|<F1>"] = map_cmd("<Plug>(Luadev-Run)"):with_silent(),
-	-- Plugin auto_session
-	["n|<leader>ss"] = map_cu("SaveSession"):with_noremap():with_silent(),
-	["n|<leader>sr"] = map_cu("RestoreSession"):with_noremap():with_silent(),
-	["n|<leader>sd"] = map_cu("DeleteSession"):with_noremap():with_silent(),
 	-- Plugin SnipRun
 	["n|<F5>"] = map_cr("%SnipRun"):with_noremap():with_silent(),
 	["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent(),
@@ -114,26 +110,9 @@ local plug_map = {
 	["i|<c-_>"] = map_cmd("<c-o>:CommentToggle<cr>"):with_noremap():with_silent(),
 	["n|<c-_>"] = map_cr("CommentToggle"):with_noremap():with_silent(),
 	["v|<c-_>"] = map_cr("'<,'>CommentToggle"):with_noremap():with_silent(),
-	-- Plugin dap
-	-- ["n|<F6>"] = map_cr("lua require('dap').continue()"):with_noremap():with_silent(),
-	-- ["n|<leader>dc"] = map_cr("lua require('dap').continue()"):with_noremap():with_silent(),
-	-- ["n|<leader>drc"] = map_cr("lua require('dap').run_to_cursor()"):with_noremap():with_silent(),
-	-- ["n|<leader>drl"] = map_cr("lua require('dap').run_last()"):with_noremap():with_silent(),
-	-- ["n|<leader>dd"] = map_cr("lua require('dap').disconnect()"):with_noremap():with_silent(),
-	-- ["n|<leader>dbt"] = map_cr("lua require('dap').toggle_breakpoint()"):with_noremap():with_silent(),
-	-- ["n|<leader>dB"] = map_cr("lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))")
-	-- 	:with_noremap()
-	-- 	:with_silent(),
-	-- ["n|<leader>dbl"] = map_cr("lua require('dap').list_breakpoints()"):with_noremap():with_silent(),
-	-- ["n|<F7>"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
-	-- ["n|<leader>dv"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
-	-- ["n|<F8>"] = map_cr("lua require('dap').step_into()"):with_noremap():with_silent(),
-	-- ["n|<leader>di"] = map_cr("lua require('dap').step_into()"):with_noremap():with_silent(),
-	-- ["n|<F9>"] = map_cr("lua require('dap').step_out()"):with_noremap():with_silent(),
-	-- ["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap():with_silent(),
-	-- ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap():with_silent(),
 	-- treesitter object
 	["o|m"] = map_cu([[lua require('tsht').nodes()]]):with_silent(),
+	["v|m"] = map_cu([[lua require('tsht').nodes()]]):with_silent():with_noremap(),
 }
 
 bind.nvim_load_mapping(plug_map)

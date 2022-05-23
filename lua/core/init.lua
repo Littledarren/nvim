@@ -34,7 +34,7 @@ end
 
 -- super neovide
 local neovide_config = function()
-	vim.cmd([[set guifont=NotoSansCJK]])
+	-- vim.cmd([[set guifont=NotoSansCJK]])
 	vim.g.neovide_refresh_rate = 60
 	vim.g.neovide_cursor_vfx_mode = "railgun"
 	vim.g.neovide_no_idle = true
@@ -95,8 +95,6 @@ local load_core = function()
 	require("keymap")
 	require("core.autocmd")
 	pack.load_compile()
-
-	vim.cmd([[colorscheme tokyonight]])
 end
 
 load_core()
