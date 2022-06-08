@@ -4,7 +4,6 @@ local conf = require("modules.ui.config")
 -- 获取icon
 ui["kyazdani42/nvim-web-devicons"] = {}
 -- colorscheme
-ui["rebelot/kanagawa.nvim"] = { config = conf.kanagawa }
 ui["folke/tokyonight.nvim"] = {}
 -- colorscheme maybe?
 ui["catppuccin/nvim"] = {
