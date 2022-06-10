@@ -15,7 +15,7 @@ editor["terrortylor/nvim-comment"] = {
 -- tagbar based on lsp
 editor["stevearc/aerial.nvim"] = {
 	opt = true,
-	cmd = { "AerialToggle"},
+	cmd = { "AerialToggle" },
 	config = conf.aerial,
 }
 editor["nvim-treesitter/nvim-treesitter"] = {
@@ -26,7 +26,7 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 }
 
 editor["nvim-treesitter/playground"] = {
-    after = "nvim-treesitter"
+	after = "nvim-treesitter",
 }
 
 editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
@@ -118,10 +118,10 @@ editor["ojroques/vim-oscyank"] = {
 	end,
 }
 -- statusline
-editor["arkav/lualine-lsp-progress"] = { }
+editor["arkav/lualine-lsp-progress"] = {}
 editor["hoob3rt/lualine.nvim"] = {
 	config = conf.lualine,
-	after = "lualine-lsp-progress",
+	after = { "lualine-lsp-progress", "onedark.nvim" },
 }
 -- bufferline 类似airline的那个。
 editor["akinsho/bufferline.nvim"] = {

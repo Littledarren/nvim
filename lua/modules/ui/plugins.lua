@@ -11,7 +11,11 @@ ui["catppuccin/nvim"] = {
 	as = "catppuccin",
 	config = conf.catppuccin,
 }
-ui["navarasu/onedark.nvim"] = {}
+ui["navarasu/onedark.nvim"] = {
+	config = function()
+		require("onedark").load()
+	end,
+}
 
 -- 启动页
 ui["goolord/alpha-nvim"] = { opt = true, event = "BufWinEnter", config = conf.alpha }
