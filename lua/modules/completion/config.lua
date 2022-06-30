@@ -275,6 +275,7 @@ function config.nullls()
 	local sources = {
 		formatting.stylua,
 		formatting.clang_format,
+		formatting.buf,
 		formatting.latexindent,
 		formatting.prettier.with({
 			disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
@@ -288,6 +289,7 @@ function config.nullls()
 		formatting.goimports,
 
 		diagnostics.eslint_d,
+		diagnostics.buf,
 		diagnostics.shellcheck,
 		diagnostics.codespell,
 

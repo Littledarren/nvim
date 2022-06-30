@@ -153,12 +153,12 @@ editor["michaelb/sniprun"] = {
 	cmd = { "SnipRun", "'<,'>SnipRun" },
 }
 
--- beautiful vim.notify
-editor["rcarriga/nvim-notify"] = {
-	config = function()
-		vim.notify = require("notify")
-	end,
-}
+-- -- beautiful vim.notify
+-- editor["rcarriga/nvim-notify"] = {
+-- 	config = function()
+-- 		vim.notify = require("notify")
+-- 	end,
+-- }
 
 -- 输入法切换
 editor["rlue/vim-barbaric"] = {}
