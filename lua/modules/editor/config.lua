@@ -11,7 +11,30 @@ function config.nvim_treesitter()
 	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = "all",
+		ensure_installed = {
+			"c",
+			"cpp",
+			"vue",
+			"bash",
+			"latex",
+			"bibtex",
+			"java",
+			"gomod",
+			"yaml",
+			"javascript",
+			"dockerfile",
+			"html",
+			"make",
+			"lua",
+			"rust",
+			"python",
+			"go",
+			"markdown_inline",
+			"json",
+			"markdown",
+			"proto",
+			"typescript",
+		},
 		highlight = { enable = true, disable = { "vim", "latex" } },
 		playground = {
 			enable = true,
