@@ -113,6 +113,7 @@ editor["tpope/vim-fugitive"] = {}
 editor["ojroques/vim-oscyank"] = {
 	config = function()
 		vim.cmd([[
+            let g:oscyank_term = 'default'
             autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
         ]])
 	end,
